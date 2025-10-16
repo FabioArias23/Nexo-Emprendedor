@@ -4,61 +4,79 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Str;
-use Laravel\Fortify\TwoFactorAuthenticatable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, TwoFactorAuthenticatable;
+    use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var list<string>
+     * @var array<int, string>
      */
     protected $fillable = [
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var list<string>
+     * @var array<int, string>
      */
     protected $hidden = [
         'password',
-        'two_factor_secret',
-        'two_factor_recovery_codes',
         'remember_token',
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast.
      *
-     * @return array<string, string>
+     * @var array<string, string>
      */
-    protected function casts(): array
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+        'role' => 'string', // Laravel 11+ maneja enums automáticamente, pero es bueno ser explícito
+    ];
+
+    /**
+     * Un usuario tiene un perfil.
+     */
+    public function profile(): HasOne
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->hasOne(Profile::class);
     }
 
     /**
-     * Get the user's initials
+     * Un usuario (emprendedor) tiene muchos proyectos.
      */
-    public function initials(): string
+    public function projects(): HasMany
     {
-        return Str::of($this->name)
-            ->explode(' ')
-            ->take(2)
-            ->map(fn ($word) => Str::substr($word, 0, 1))
-            ->implode('');
+        return $this->hasMany(Project::class);
+    }
+
+    /**
+     * Un usuario (inversor) realiza muchas inversiones.
+     */
+    public function investments(): HasMany
+    {
+        // Especificamos la clave foránea porque no sigue la convención 'user_id'
+        return $this->hasMany(Investment::class, 'investor_id');
+    }
+
+    /**
+     * Un usuario puede dar 'like' a muchos proyectos.
+     */
+    public function likes(): BelongsToMany
+    {
+        return $this->belongsToMany(Project::class, 'project_likes')->withTimestamps();
     }
 }
