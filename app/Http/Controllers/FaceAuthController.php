@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-
+use App\Services\FaceRecognitionService;
 class FaceAuthController extends Controller
 {
     /**
      * Registra el rostro del usuario autenticado actualmente.
      */
-    public function enroll(Request $request)
+    public function enroll(Request $request, FaceRecognitionService $faceService)
     {
         $request->validate(['image' => 'required']);
 

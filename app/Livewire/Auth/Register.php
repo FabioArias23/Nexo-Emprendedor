@@ -3,6 +3,7 @@
 namespace App\Livewire\Auth;
 
 use App\Models\User;
+use App\Services\FaceRecognitionService; // <-- AÑADE ESTO
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -14,17 +15,17 @@ use Livewire\Component;
 class Register extends Component
 {
     public string $name = '';
-
     public string $email = '';
-
     public string $password = '';
-
     public string $password_confirmation = '';
+    
+    // <-- AÑADE ESTA PROPIEDAD PÚBLICA (puede ser nula)
+    public ?string $faceImage = null;
 
     /**
      * Handle an incoming registration request.
      */
-    public function register(): void
+    public function register(FaceRecognitionService $faceService): void // <-- INYECTA EL SERVICIO
     {
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -32,7 +33,16 @@ class Register extends Component
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        event(new Registered(($user = User::create($validated))));
+        $user = User::create($validated);
+
+        event(new Registered($user));
+
+        // <-- AÑADE ESTA LÓGICA
+        // Si el usuario capturó una imagen de su rostro, la registramos.
+        if (!empty($this->faceImage)) {
+            $faceService->enroll($user, $this->faceImage);
+            // Aquí podrías añadir un log o un flash message si falla, pero para un hackathon lo mantenemos simple.
+        }
 
         Auth::login($user);
 
