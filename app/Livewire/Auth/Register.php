@@ -3,7 +3,7 @@
 namespace App\Livewire\Auth;
 
 use App\Models\User;
-use App\Services\FaceRecognitionService; // <-- AÑADE ESTO
+use App\Services\FaceRecognitionService;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -19,32 +19,25 @@ class Register extends Component
     public string $email = '';
     public string $password = '';
     public string $password_confirmation = '';
-    
-    // <-- AÑADE ESTA PROPIEDAD PÚBLICA (puede ser nula)
     public ?string $faceImage = null;
+    public string $role = '';
 
-    /**
-     * Handle an incoming registration request.
-     */
-    public function register(FaceRecognitionService $faceService): void // <-- INYECTA EL SERVICIO
+    public function register(FaceRecognitionService $faceService): void
     {
+        // <-- CAMBIO CLAVE 2: La validación ahora usa las constantes en inglés del modelo User.
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
-            'role' => ['required', 'string', Rule::in([User::ROLE_EMPRENDEDOR, User::ROLE_INVERSOR])],
- 
+            'role' => ['required', 'string', Rule::in([User::ROLE_ENTREPRENEUR, User::ROLE_INVESTOR])],
         ]);
 
         $user = User::create($validated);
 
         event(new Registered($user));
 
-        // <-- AÑADE ESTA LÓGICA
-        // Si el usuario capturó una imagen de su rostro, la registramos.
         if (!empty($this->faceImage)) {
             $faceService->enroll($user, $this->faceImage);
-            // Aquí podrías añadir un log o un flash message si falla, pero para un hackathon lo mantenemos simple.
         }
 
         Auth::login($user);

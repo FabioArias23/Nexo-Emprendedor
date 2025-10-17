@@ -23,8 +23,8 @@ class User extends Authenticatable
 
     
     // Añade constantes para los roles
-    public const ROLE_INVERSOR = 'inversor';
-    public const ROLE_EMPRENDEDOR = 'emprendedor';
+    public const ROLE_INVESTOR = 'investor';
+    public const ROLE_ENTREPRENEUR = 'entrepreneur';
 
 
     protected $fillable = [
