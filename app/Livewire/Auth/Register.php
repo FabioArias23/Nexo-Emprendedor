@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -24,12 +25,16 @@ class Register extends Component
     /**
      * Handle an incoming registration request.
      */
+    // Añade la propiedad para el rol con un valor por defecto
+    public string $role = User::ROLE_EMPRENDEDOR;
     public function register(): void
     {
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
+            'role' => ['required', 'string', Rule::in([User::ROLE_EMPRENDEDOR, User::ROLE_INVERSOR])],
+ 
         ]);
 
         event(new Registered(($user = User::create($validated))));
