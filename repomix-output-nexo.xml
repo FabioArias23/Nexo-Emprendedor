@@ -1,0 +1,5911 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.editorconfig
+.env.example
+.gitattributes
+.github/workflows/lint.yml
+.github/workflows/tests.yml
+.gitignore
+app/Http/Controllers/Auth/VerifyEmailController.php
+app/Http/Controllers/Controller.php
+app/Livewire/Actions/Logout.php
+app/Livewire/Auth/ForgotPassword.php
+app/Livewire/Auth/Login.php
+app/Livewire/Auth/Register.php
+app/Livewire/Auth/ResetPassword.php
+app/Livewire/Auth/VerifyEmail.php
+app/Livewire/Settings/Appearance.php
+app/Livewire/Settings/DeleteUserForm.php
+app/Livewire/Settings/Password.php
+app/Livewire/Settings/Profile.php
+app/Livewire/Settings/TwoFactor.php
+app/Livewire/Settings/TwoFactor/RecoveryCodes.php
+app/Models/User.php
+app/Providers/AppServiceProvider.php
+app/Providers/FortifyServiceProvider.php
+artisan
+bootstrap/app.php
+bootstrap/cache/.gitignore
+bootstrap/providers.php
+composer.json
+config/app.php
+config/auth.php
+config/cache.php
+config/database.php
+config/filesystems.php
+config/fortify.php
+config/logging.php
+config/mail.php
+config/queue.php
+config/services.php
+config/session.php
+database/.gitignore
+database/factories/UserFactory.php
+database/migrations/0001_01_01_000000_create_users_table.php
+database/migrations/0001_01_01_000001_create_cache_table.php
+database/migrations/0001_01_01_000002_create_jobs_table.php
+database/migrations/2025_09_22_145432_add_two_factor_columns_to_users_table.php
+database/seeders/DatabaseSeeder.php
+package.json
+phpunit.xml
+public/.htaccess
+public/apple-touch-icon.png
+public/favicon.ico
+public/favicon.svg
+public/index.php
+public/robots.txt
+README.md
+resources/css/app.css
+resources/js/app.js
+resources/views/components/action-message.blade.php
+resources/views/components/app-logo-icon.blade.php
+resources/views/components/app-logo.blade.php
+resources/views/components/auth-header.blade.php
+resources/views/components/auth-session-status.blade.php
+resources/views/components/input-otp.blade.php
+resources/views/components/layouts/app.blade.php
+resources/views/components/layouts/app/header.blade.php
+resources/views/components/layouts/app/sidebar.blade.php
+resources/views/components/layouts/auth.blade.php
+resources/views/components/layouts/auth/card.blade.php
+resources/views/components/layouts/auth/simple.blade.php
+resources/views/components/layouts/auth/split.blade.php
+resources/views/components/placeholder-pattern.blade.php
+resources/views/components/settings/layout.blade.php
+resources/views/dashboard.blade.php
+resources/views/flux/icon/book-open-text.blade.php
+resources/views/flux/icon/chevrons-up-down.blade.php
+resources/views/flux/icon/folder-git-2.blade.php
+resources/views/flux/icon/layout-grid.blade.php
+resources/views/flux/navlist/group.blade.php
+resources/views/livewire/auth/confirm-password.blade.php
+resources/views/livewire/auth/forgot-password.blade.php
+resources/views/livewire/auth/login.blade.php
+resources/views/livewire/auth/register.blade.php
+resources/views/livewire/auth/reset-password.blade.php
+resources/views/livewire/auth/two-factor-challenge.blade.php
+resources/views/livewire/auth/verify-email.blade.php
+resources/views/livewire/settings/appearance.blade.php
+resources/views/livewire/settings/delete-user-form.blade.php
+resources/views/livewire/settings/password.blade.php
+resources/views/livewire/settings/profile.blade.php
+resources/views/livewire/settings/two-factor.blade.php
+resources/views/livewire/settings/two-factor/recovery-codes.blade.php
+resources/views/partials/head.blade.php
+resources/views/partials/settings-heading.blade.php
+resources/views/welcome.blade.php
+routes/auth.php
+routes/console.php
+routes/web.php
+storage/app/.gitignore
+storage/app/private/.gitignore
+storage/app/public/.gitignore
+storage/framework/.gitignore
+storage/framework/cache/.gitignore
+storage/framework/cache/data/.gitignore
+storage/framework/sessions/.gitignore
+storage/framework/testing/.gitignore
+storage/framework/views/.gitignore
+storage/logs/.gitignore
+tests/Feature/Auth/AuthenticationTest.php
+tests/Feature/Auth/EmailVerificationTest.php
+tests/Feature/Auth/PasswordConfirmationTest.php
+tests/Feature/Auth/PasswordResetTest.php
+tests/Feature/Auth/RegistrationTest.php
+tests/Feature/Auth/TwoFactorChallengeTest.php
+tests/Feature/DashboardTest.php
+tests/Feature/ExampleTest.php
+tests/Feature/Settings/PasswordUpdateTest.php
+tests/Feature/Settings/ProfileUpdateTest.php
+tests/Feature/Settings/TwoFactorAuthenticationTest.php
+tests/Pest.php
+tests/TestCase.php
+tests/Unit/ExampleTest.php
+vite.config.js
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".editorconfig">
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.{yml,yaml}]
+indent_size = 2
+
+[docker-compose.yml]
+indent_size = 4
+</file>
+
+<file path=".env.example">
+APP_NAME=Laravel
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost
+
+APP_LOCALE=en
+APP_FALLBACK_LOCALE=en
+APP_FAKER_LOCALE=en_US
+
+APP_MAINTENANCE_DRIVER=file
+# APP_MAINTENANCE_STORE=database
+
+PHP_CLI_SERVER_WORKERS=4
+
+BCRYPT_ROUNDS=12
+
+LOG_CHANNEL=stack
+LOG_STACK=single
+LOG_DEPRECATIONS_CHANNEL=null
+LOG_LEVEL=debug
+
+DB_CONNECTION=sqlite
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=laravel
+# DB_USERNAME=root
+# DB_PASSWORD=
+
+SESSION_DRIVER=database
+SESSION_LIFETIME=120
+SESSION_ENCRYPT=false
+SESSION_PATH=/
+SESSION_DOMAIN=null
+
+BROADCAST_CONNECTION=log
+FILESYSTEM_DISK=local
+QUEUE_CONNECTION=database
+
+CACHE_STORE=database
+# CACHE_PREFIX=
+
+MEMCACHED_HOST=127.0.0.1
+
+REDIS_CLIENT=phpredis
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+MAIL_MAILER=log
+MAIL_SCHEME=null
+MAIL_HOST=127.0.0.1
+MAIL_PORT=2525
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
+
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+AWS_USE_PATH_STYLE_ENDPOINT=false
+
+VITE_APP_NAME="${APP_NAME}"
+</file>
+
+<file path=".gitattributes">
+* text=auto eol=lf
+
+*.blade.php diff=html
+*.css diff=css
+*.html diff=html
+*.md diff=markdown
+*.php diff=php
+
+CHANGELOG.md export-ignore
+README.md export-ignore
+</file>
+
+<file path=".github/workflows/lint.yml">
+name: linter
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+  pull_request:
+    branches:
+      - develop
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    environment: Testing
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+
+      - name: Add Flux Credentials Loaded From ENV
+        run: composer config http-basic.composer.fluxui.dev "${{ secrets.FLUX_USERNAME }}" "${{ secrets.FLUX_LICENSE_KEY }}"
+
+      - name: Install Dependencies
+        run: |
+          composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+          npm install
+
+      - name: Run Pint
+        run: vendor/bin/pint
+
+      # - name: Commit Changes
+      #   uses: stefanzweifel/git-auto-commit-action@v5
+      #   with:
+      #     commit_message: fix code style
+      #     commit_options: '--no-verify'
+      #     file_pattern: |
+      #       **/*
+      #       !.github/workflows/*
+</file>
+
+<file path=".github/workflows/tests.yml">
+name: tests
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+  pull_request:
+    branches:
+      - develop
+      - main
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    environment: Testing
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.4
+          tools: composer:v2
+          coverage: xdebug
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install Node Dependencies
+        run: npm i
+
+      - name: Add Flux Credentials Loaded From ENV
+        run: composer config http-basic.composer.fluxui.dev "${{ secrets.FLUX_USERNAME }}" "${{ secrets.FLUX_LICENSE_KEY }}"
+
+      - name: Install Dependencies
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Copy Environment File
+        run: cp .env.example .env
+
+      - name: Generate Application Key
+        run: php artisan key:generate
+
+      - name: Build Assets
+        run: npm run build
+
+      - name: Run Tests
+        run: ./vendor/bin/pest
+</file>
+
+<file path=".gitignore">
+/.phpunit.cache
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+/vendor
+.env
+.env.backup
+.env.production
+.phpactor.json
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/auth.json
+/.fleet
+/.idea
+/.nova
+/.vscode
+/.zed
+</file>
+
+<file path="app/Http/Controllers/Auth/VerifyEmailController.php">
+<?php
+
+namespace App\Http\Controllers\Auth;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\RedirectResponse;
+
+class VerifyEmailController extends Controller
+{
+    /**
+     * Mark the authenticated user's email address as verified.
+     */
+    public function __invoke(EmailVerificationRequest $request): RedirectResponse
+    {
+        if ($request->user()->hasVerifiedEmail()) {
+            return redirect()->intended(route('dashboard', absolute: false).'?verified=1');
+        }
+
+        $request->fulfill();
+
+        return redirect()->intended(route('dashboard', absolute: false).'?verified=1');
+    }
+}
+</file>
+
+<file path="app/Http/Controllers/Controller.php">
+<?php
+
+namespace App\Http\Controllers;
+
+abstract class Controller
+{
+    //
+}
+</file>
+
+<file path="app/Livewire/Actions/Logout.php">
+<?php
+
+namespace App\Livewire\Actions;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+
+class Logout
+{
+    /**
+     * Log the current user out of the application.
+     */
+    public function __invoke()
+    {
+        Auth::guard('web')->logout();
+
+        Session::invalidate();
+        Session::regenerateToken();
+
+        return redirect('/');
+    }
+}
+</file>
+
+<file path="app/Livewire/Auth/ForgotPassword.php">
+<?php
+
+namespace App\Livewire\Auth;
+
+use Illuminate\Support\Facades\Password;
+use Livewire\Attributes\Layout;
+use Livewire\Component;
+
+#[Layout('components.layouts.auth')]
+class ForgotPassword extends Component
+{
+    public string $email = '';
+
+    /**
+     * Send a password reset link to the provided email address.
+     */
+    public function sendPasswordResetLink(): void
+    {
+        $this->validate([
+            'email' => ['required', 'string', 'email'],
+        ]);
+
+        Password::sendResetLink($this->only('email'));
+
+        session()->flash('status', __('A reset link will be sent if the account exists.'));
+    }
+}
+</file>
+
+<file path="app/Livewire/Auth/Login.php">
+<?php
+
+namespace App\Livewire\Auth;
+
+use App\Models\User;
+use Illuminate\Auth\Events\Lockout;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
+use Laravel\Fortify\Features;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Validate;
+use Livewire\Component;
+
+#[Layout('components.layouts.auth')]
+class Login extends Component
+{
+    #[Validate('required|string|email')]
+    public string $email = '';
+
+    #[Validate('required|string')]
+    public string $password = '';
+
+    public bool $remember = false;
+
+    /**
+     * Handle an incoming authentication request.
+     */
+    public function login(): void
+    {
+        $this->validate();
+
+        $this->ensureIsNotRateLimited();
+
+        $user = $this->validateCredentials();
+
+        if (Features::canManageTwoFactorAuthentication() && $user->hasEnabledTwoFactorAuthentication()) {
+            Session::put([
+                'login.id' => $user->getKey(),
+                'login.remember' => $this->remember,
+            ]);
+
+            $this->redirect(route('two-factor.login'), navigate: true);
+
+            return;
+        }
+
+        Auth::login($user, $this->remember);
+
+        RateLimiter::clear($this->throttleKey());
+        Session::regenerate();
+
+        $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+    }
+
+    /**
+     * Validate the user's credentials.
+     */
+    protected function validateCredentials(): User
+    {
+        $user = Auth::getProvider()->retrieveByCredentials(['email' => $this->email, 'password' => $this->password]);
+
+        if (! $user || ! Auth::getProvider()->validateCredentials($user, ['password' => $this->password])) {
+            RateLimiter::hit($this->throttleKey());
+
+            throw ValidationException::withMessages([
+                'email' => __('auth.failed'),
+            ]);
+        }
+
+        return $user;
+    }
+
+    /**
+     * Ensure the authentication request is not rate limited.
+     */
+    protected function ensureIsNotRateLimited(): void
+    {
+        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+            return;
+        }
+
+        event(new Lockout(request()));
+
+        $seconds = RateLimiter::availableIn($this->throttleKey());
+
+        throw ValidationException::withMessages([
+            'email' => __('auth.throttle', [
+                'seconds' => $seconds,
+                'minutes' => ceil($seconds / 60),
+            ]),
+        ]);
+    }
+
+    /**
+     * Get the authentication rate limiting throttle key.
+     */
+    protected function throttleKey(): string
+    {
+        return Str::transliterate(Str::lower($this->email).'|'.request()->ip());
+    }
+}
+</file>
+
+<file path="app/Livewire/Auth/Register.php">
+<?php
+
+namespace App\Livewire\Auth;
+
+use App\Models\User;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\Rules;
+use Livewire\Attributes\Layout;
+use Livewire\Component;
+
+#[Layout('components.layouts.auth')]
+class Register extends Component
+{
+    public string $name = '';
+
+    public string $email = '';
+
+    public string $password = '';
+
+    public string $password_confirmation = '';
+
+    /**
+     * Handle an incoming registration request.
+     */
+    public function register(): void
+    {
+        $validated = $this->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        event(new Registered(($user = User::create($validated))));
+
+        Auth::login($user);
+
+        Session::regenerate();
+
+        $this->redirect(route('dashboard', absolute: false), navigate: true);
+    }
+}
+</file>
+
+<file path="app/Livewire/Auth/ResetPassword.php">
+<?php
+
+namespace App\Livewire\Auth;
+
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
+use Illuminate\Validation\Rules;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Locked;
+use Livewire\Component;
+
+#[Layout('components.layouts.auth')]
+class ResetPassword extends Component
+{
+    #[Locked]
+    public string $token = '';
+
+    public string $email = '';
+
+    public string $password = '';
+
+    public string $password_confirmation = '';
+
+    /**
+     * Mount the component.
+     */
+    public function mount(string $token): void
+    {
+        $this->token = $token;
+
+        $this->email = request()->string('email')->value();
+    }
+
+    /**
+     * Reset the password for the given user.
+     */
+    public function resetPassword(): void
+    {
+        $this->validate([
+            'token' => ['required'],
+            'email' => ['required', 'string', 'email'],
+            'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        // Here we will attempt to reset the user's password. If it is successful we
+        // will update the password on an actual user model and persist it to the
+        // database. Otherwise we will parse the error and return the response.
+        $status = Password::reset(
+            $this->only('email', 'password', 'password_confirmation', 'token'),
+            function ($user) {
+                $user->forceFill([
+                    'password' => $this->password,
+                    'remember_token' => Str::random(60),
+                ])->save();
+
+                event(new PasswordReset($user));
+            }
+        );
+
+        // If the password was successfully reset, we will redirect the user back to
+        // the application's home authenticated view. If there is an error we can
+        // redirect them back to where they came from with their error message.
+        if ($status != Password::PasswordReset) {
+            $this->addError('email', __($status));
+
+            return;
+        }
+
+        Session::flash('status', __($status));
+
+        $this->redirectRoute('login', navigate: true);
+    }
+}
+</file>
+
+<file path="app/Livewire/Auth/VerifyEmail.php">
+<?php
+
+namespace App\Livewire\Auth;
+
+use App\Livewire\Actions\Logout;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Livewire\Attributes\Layout;
+use Livewire\Component;
+
+#[Layout('components.layouts.auth')]
+class VerifyEmail extends Component
+{
+    /**
+     * Send an email verification notification to the user.
+     */
+    public function sendVerification(): void
+    {
+        if (Auth::user()->hasVerifiedEmail()) {
+            $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+
+            return;
+        }
+
+        Auth::user()->sendEmailVerificationNotification();
+
+        Session::flash('status', 'verification-link-sent');
+    }
+
+    /**
+     * Log the current user out of the application.
+     */
+    public function logout(Logout $logout): void
+    {
+        $logout();
+
+        $this->redirect('/', navigate: true);
+    }
+}
+</file>
+
+<file path="app/Livewire/Settings/Appearance.php">
+<?php
+
+namespace App\Livewire\Settings;
+
+use Livewire\Component;
+
+class Appearance extends Component
+{
+    //
+}
+</file>
+
+<file path="app/Livewire/Settings/DeleteUserForm.php">
+<?php
+
+namespace App\Livewire\Settings;
+
+use App\Livewire\Actions\Logout;
+use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
+
+class DeleteUserForm extends Component
+{
+    public string $password = '';
+
+    /**
+     * Delete the currently authenticated user.
+     */
+    public function deleteUser(Logout $logout): void
+    {
+        $this->validate([
+            'password' => ['required', 'string', 'current_password'],
+        ]);
+
+        tap(Auth::user(), $logout(...))->delete();
+
+        $this->redirect('/', navigate: true);
+    }
+}
+</file>
+
+<file path="app/Livewire/Settings/Password.php">
+<?php
+
+namespace App\Livewire\Settings;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Password as PasswordRule;
+use Illuminate\Validation\ValidationException;
+use Livewire\Component;
+
+class Password extends Component
+{
+    public string $current_password = '';
+
+    public string $password = '';
+
+    public string $password_confirmation = '';
+
+    /**
+     * Update the password for the currently authenticated user.
+     */
+    public function updatePassword(): void
+    {
+        try {
+            $validated = $this->validate([
+                'current_password' => ['required', 'string', 'current_password'],
+                'password' => ['required', 'string', PasswordRule::defaults(), 'confirmed'],
+            ]);
+        } catch (ValidationException $e) {
+            $this->reset('current_password', 'password', 'password_confirmation');
+
+            throw $e;
+        }
+
+        Auth::user()->update([
+            'password' => $validated['password'],
+        ]);
+
+        $this->reset('current_password', 'password', 'password_confirmation');
+
+        $this->dispatch('password-updated');
+    }
+}
+</file>
+
+<file path="app/Livewire/Settings/Profile.php">
+<?php
+
+namespace App\Livewire\Settings;
+
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\Rule;
+use Livewire\Component;
+
+class Profile extends Component
+{
+    public string $name = '';
+
+    public string $email = '';
+
+    /**
+     * Mount the component.
+     */
+    public function mount(): void
+    {
+        $this->name = Auth::user()->name;
+        $this->email = Auth::user()->email;
+    }
+
+    /**
+     * Update the profile information for the currently authenticated user.
+     */
+    public function updateProfileInformation(): void
+    {
+        $user = Auth::user();
+
+        $validated = $this->validate([
+            'name' => ['required', 'string', 'max:255'],
+
+            'email' => [
+                'required',
+                'string',
+                'lowercase',
+                'email',
+                'max:255',
+                Rule::unique(User::class)->ignore($user->id),
+            ],
+        ]);
+
+        $user->fill($validated);
+
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
+        }
+
+        $user->save();
+
+        $this->dispatch('profile-updated', name: $user->name);
+    }
+
+    /**
+     * Send an email verification notification to the current user.
+     */
+    public function resendVerificationNotification(): void
+    {
+        $user = Auth::user();
+
+        if ($user->hasVerifiedEmail()) {
+            $this->redirectIntended(default: route('dashboard', absolute: false));
+
+            return;
+        }
+
+        $user->sendEmailVerificationNotification();
+
+        Session::flash('status', 'verification-link-sent');
+    }
+}
+</file>
+
+<file path="app/Livewire/Settings/TwoFactor.php">
+<?php
+
+namespace App\Livewire\Settings;
+
+use Exception;
+use Laravel\Fortify\Actions\ConfirmTwoFactorAuthentication;
+use Laravel\Fortify\Actions\DisableTwoFactorAuthentication;
+use Laravel\Fortify\Actions\EnableTwoFactorAuthentication;
+use Laravel\Fortify\Features;
+use Laravel\Fortify\Fortify;
+use Livewire\Attributes\Locked;
+use Livewire\Attributes\Validate;
+use Livewire\Component;
+use Symfony\Component\HttpFoundation\Response;
+
+class TwoFactor extends Component
+{
+    #[Locked]
+    public bool $twoFactorEnabled;
+
+    #[Locked]
+    public bool $requiresConfirmation;
+
+    #[Locked]
+    public string $qrCodeSvg = '';
+
+    #[Locked]
+    public string $manualSetupKey = '';
+
+    public bool $showModal = false;
+
+    public bool $showVerificationStep = false;
+
+    #[Validate('required|string|size:6', onUpdate: false)]
+    public string $code = '';
+
+    /**
+     * Mount the component.
+     */
+    public function mount(DisableTwoFactorAuthentication $disableTwoFactorAuthentication): void
+    {
+        abort_unless(Features::enabled(Features::twoFactorAuthentication()), Response::HTTP_FORBIDDEN);
+
+        if (Fortify::confirmsTwoFactorAuthentication() && is_null(auth()->user()->two_factor_confirmed_at)) {
+            $disableTwoFactorAuthentication(auth()->user());
+        }
+
+        $this->twoFactorEnabled = auth()->user()->hasEnabledTwoFactorAuthentication();
+        $this->requiresConfirmation = Features::optionEnabled(Features::twoFactorAuthentication(), 'confirm');
+    }
+
+    /**
+     * Enable two-factor authentication for the user.
+     */
+    public function enable(EnableTwoFactorAuthentication $enableTwoFactorAuthentication): void
+    {
+        $enableTwoFactorAuthentication(auth()->user());
+
+        if (! $this->requiresConfirmation) {
+            $this->twoFactorEnabled = auth()->user()->hasEnabledTwoFactorAuthentication();
+        }
+
+        $this->loadSetupData();
+
+        $this->showModal = true;
+    }
+
+    /**
+     * Load the two-factor authentication setup data for the user.
+     */
+    private function loadSetupData(): void
+    {
+        $user = auth()->user();
+
+        try {
+            $this->qrCodeSvg = $user?->twoFactorQrCodeSvg();
+            $this->manualSetupKey = decrypt($user->two_factor_secret);
+        } catch (Exception) {
+            $this->addError('setupData', 'Failed to fetch setup data.');
+
+            $this->reset('qrCodeSvg', 'manualSetupKey');
+        }
+    }
+
+    /**
+     * Show the two-factor verification step if necessary.
+     */
+    public function showVerificationIfNecessary(): void
+    {
+        if ($this->requiresConfirmation) {
+            $this->showVerificationStep = true;
+
+            $this->resetErrorBag();
+
+            return;
+        }
+
+        $this->closeModal();
+    }
+
+    /**
+     * Confirm two-factor authentication for the user.
+     */
+    public function confirmTwoFactor(ConfirmTwoFactorAuthentication $confirmTwoFactorAuthentication): void
+    {
+        $this->validate();
+
+        $confirmTwoFactorAuthentication(auth()->user(), $this->code);
+
+        $this->closeModal();
+
+        $this->twoFactorEnabled = true;
+    }
+
+    /**
+     * Reset two-factor verification state.
+     */
+    public function resetVerification(): void
+    {
+        $this->reset('code', 'showVerificationStep');
+
+        $this->resetErrorBag();
+    }
+
+    /**
+     * Disable two-factor authentication for the user.
+     */
+    public function disable(DisableTwoFactorAuthentication $disableTwoFactorAuthentication): void
+    {
+        $disableTwoFactorAuthentication(auth()->user());
+
+        $this->twoFactorEnabled = false;
+    }
+
+    /**
+     * Close the two-factor authentication modal.
+     */
+    public function closeModal(): void
+    {
+        $this->reset(
+            'code',
+            'manualSetupKey',
+            'qrCodeSvg',
+            'showModal',
+            'showVerificationStep',
+        );
+
+        $this->resetErrorBag();
+
+        if (! $this->requiresConfirmation) {
+            $this->twoFactorEnabled = auth()->user()->hasEnabledTwoFactorAuthentication();
+        }
+    }
+
+    /**
+     * Get the current modal configuration state.
+     */
+    public function getModalConfigProperty(): array
+    {
+        if ($this->twoFactorEnabled) {
+            return [
+                'title' => __('Two-Factor Authentication Enabled'),
+                'description' => __('Two-factor authentication is now enabled. Scan the QR code or enter the setup key in your authenticator app.'),
+                'buttonText' => __('Close'),
+            ];
+        }
+
+        if ($this->showVerificationStep) {
+            return [
+                'title' => __('Verify Authentication Code'),
+                'description' => __('Enter the 6-digit code from your authenticator app.'),
+                'buttonText' => __('Continue'),
+            ];
+        }
+
+        return [
+            'title' => __('Enable Two-Factor Authentication'),
+            'description' => __('To finish enabling two-factor authentication, scan the QR code or enter the setup key in your authenticator app.'),
+            'buttonText' => __('Continue'),
+        ];
+    }
+}
+</file>
+
+<file path="app/Livewire/Settings/TwoFactor/RecoveryCodes.php">
+<?php
+
+namespace App\Livewire\Settings\TwoFactor;
+
+use Exception;
+use Laravel\Fortify\Actions\GenerateNewRecoveryCodes;
+use Livewire\Attributes\Locked;
+use Livewire\Component;
+
+class RecoveryCodes extends Component
+{
+    #[Locked]
+    public array $recoveryCodes = [];
+
+    /**
+     * Mount the component.
+     */
+    public function mount(): void
+    {
+        $this->loadRecoveryCodes();
+    }
+
+    /**
+     * Generate new recovery codes for the user.
+     */
+    public function regenerateRecoveryCodes(GenerateNewRecoveryCodes $generateNewRecoveryCodes): void
+    {
+        $generateNewRecoveryCodes(auth()->user());
+
+        $this->loadRecoveryCodes();
+    }
+
+    /**
+     * Load the recovery codes for the user.
+     */
+    private function loadRecoveryCodes(): void
+    {
+        $user = auth()->user();
+
+        if ($user->hasEnabledTwoFactorAuthentication() && $user->two_factor_recovery_codes) {
+            try {
+                $this->recoveryCodes = json_decode(decrypt($user->two_factor_recovery_codes), true);
+            } catch (Exception) {
+                $this->addError('recoveryCodes', 'Failed to load recovery codes');
+
+                $this->recoveryCodes = [];
+            }
+        }
+    }
+}
+</file>
+
+<file path="app/Models/User.php">
+<?php
+
+namespace App\Models;
+
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+
+class User extends Authenticatable
+{
+    /** @use HasFactory<\Database\Factories\UserFactory> */
+    use HasFactory, Notifiable, TwoFactorAuthenticatable;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var list<string>
+     */
+    protected $hidden = [
+        'password',
+        'two_factor_secret',
+        'two_factor_recovery_codes',
+        'remember_token',
+    ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
+    }
+
+    /**
+     * Get the user's initials
+     */
+    public function initials(): string
+    {
+        return Str::of($this->name)
+            ->explode(' ')
+            ->take(2)
+            ->map(fn ($word) => Str::substr($word, 0, 1))
+            ->implode('');
+    }
+}
+</file>
+
+<file path="app/Providers/AppServiceProvider.php">
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Register any application services.
+     */
+    public function register(): void
+    {
+        //
+    }
+
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(): void
+    {
+        //
+    }
+}
+</file>
+
+<file path="app/Providers/FortifyServiceProvider.php">
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\ServiceProvider;
+use Laravel\Fortify\Fortify;
+
+class FortifyServiceProvider extends ServiceProvider
+{
+    /**
+     * Register any application services.
+     */
+    public function register(): void
+    {
+        //
+    }
+
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(): void
+    {
+        Fortify::twoFactorChallengeView(fn () => view('livewire.auth.two-factor-challenge'));
+        Fortify::confirmPasswordView(fn () => view('livewire.auth.confirm-password'));
+
+        RateLimiter::for('two-factor', function (Request $request) {
+            return Limit::perMinute(5)->by($request->session()->get('login.id'));
+        });
+    }
+}
+</file>
+
+<file path="artisan">
+#!/usr/bin/env php
+<?php
+
+use Illuminate\Foundation\Application;
+use Symfony\Component\Console\Input\ArgvInput;
+
+define('LARAVEL_START', microtime(true));
+
+// Register the Composer autoloader...
+require __DIR__.'/vendor/autoload.php';
+
+// Bootstrap Laravel and handle the command...
+/** @var Application $app */
+$app = require_once __DIR__.'/bootstrap/app.php';
+
+$status = $app->handleCommand(new ArgvInput);
+
+exit($status);
+</file>
+
+<file path="bootstrap/app.php">
+<?php
+
+use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Configuration\Exceptions;
+use Illuminate\Foundation\Configuration\Middleware;
+
+return Application::configure(basePath: dirname(__DIR__))
+    ->withRouting(
+        web: __DIR__.'/../routes/web.php',
+        commands: __DIR__.'/../routes/console.php',
+        health: '/up',
+    )
+    ->withMiddleware(function (Middleware $middleware) {
+        //
+    })
+    ->withExceptions(function (Exceptions $exceptions) {
+        //
+    })->create();
+</file>
+
+<file path="bootstrap/cache/.gitignore">
+*
+!.gitignore
+</file>
+
+<file path="bootstrap/providers.php">
+<?php
+
+return [
+    App\Providers\AppServiceProvider::class,
+    App\Providers\FortifyServiceProvider::class,
+];
+</file>
+
+<file path="composer.json">
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "laravel/livewire-starter-kit",
+    "type": "project",
+    "description": "The official Laravel starter kit for Livewire.",
+    "keywords": [
+        "laravel",
+        "framework"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "laravel/fortify": "^1.30",
+        "laravel/framework": "^12.0",
+        "laravel/tinker": "^2.10.1",
+        "livewire/flux": "^2.1.1",
+        "livewire/volt": "^1.7.0"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.23",
+        "laravel/pail": "^1.2.2",
+        "laravel/pint": "^1.18",
+        "laravel/sail": "^1.41",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.6",
+        "pestphp/pest": "^4.1",
+        "pestphp/pest-plugin-laravel": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "setup": [
+            "composer install",
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "@php artisan key:generate",
+            "@php artisan migrate --force",
+            "npm install",
+            "npm run build"
+        ],
+        "dev": [
+            "Composer\\Config::disableProcessTimeout",
+            "npx concurrently -c \"#93c5fd,#c4b5fd,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"npm run dev\" --names='server,queue,vite'"
+        ],
+        "test": [
+            "@php artisan config:clear --ansi",
+            "@php artisan test"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi",
+            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
+            "@php artisan migrate --graceful --ansi"
+        ],
+        "pre-package-uninstall": [
+            "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
+</file>
+
+<file path="config/app.php">
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Name
+    |--------------------------------------------------------------------------
+    |
+    | This value is the name of your application, which will be used when the
+    | framework needs to place the application's name in a notification or
+    | other UI elements where an application name needs to be displayed.
+    |
+    */
+
+    'name' => env('APP_NAME', 'Laravel'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Environment
+    |--------------------------------------------------------------------------
+    |
+    | This value determines the "environment" your application is currently
+    | running in. This may determine how you prefer to configure various
+    | services the application utilizes. Set this in your ".env" file.
+    |
+    */
+
+    'env' => env('APP_ENV', 'production'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Debug Mode
+    |--------------------------------------------------------------------------
+    |
+    | When your application is in debug mode, detailed error messages with
+    | stack traces will be shown on every error that occurs within your
+    | application. If disabled, a simple generic error page is shown.
+    |
+    */
+
+    'debug' => (bool) env('APP_DEBUG', false),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application URL
+    |--------------------------------------------------------------------------
+    |
+    | This URL is used by the console to properly generate URLs when using
+    | the Artisan command line tool. You should set this to the root of
+    | the application so that it's available within Artisan commands.
+    |
+    */
+
+    'url' => env('APP_URL', 'http://localhost'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Timezone
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify the default timezone for your application, which
+    | will be used by the PHP date and date-time functions. The timezone
+    | is set to "UTC" by default as it is suitable for most use cases.
+    |
+    */
+
+    'timezone' => 'UTC',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Locale Configuration
+    |--------------------------------------------------------------------------
+    |
+    | The application locale determines the default locale that will be used
+    | by Laravel's translation / localization methods. This option can be
+    | set to any locale for which you plan to have translation strings.
+    |
+    */
+
+    'locale' => env('APP_LOCALE', 'en'),
+
+    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
+
+    'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Encryption Key
+    |--------------------------------------------------------------------------
+    |
+    | This key is utilized by Laravel's encryption services and should be set
+    | to a random, 32 character string to ensure that all encrypted values
+    | are secure. You should do this prior to deploying the application.
+    |
+    */
+
+    'cipher' => 'AES-256-CBC',
+
+    'key' => env('APP_KEY'),
+
+    'previous_keys' => [
+        ...array_filter(
+            explode(',', env('APP_PREVIOUS_KEYS', ''))
+        ),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Maintenance Mode Driver
+    |--------------------------------------------------------------------------
+    |
+    | These configuration options determine the driver used to determine and
+    | manage Laravel's "maintenance mode" status. The "cache" driver will
+    | allow maintenance mode to be controlled across multiple machines.
+    |
+    | Supported drivers: "file", "cache"
+    |
+    */
+
+    'maintenance' => [
+        'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
+        'store' => env('APP_MAINTENANCE_STORE', 'database'),
+    ],
+
+];
+</file>
+
+<file path="config/auth.php">
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Defaults
+    |--------------------------------------------------------------------------
+    |
+    | This option defines the default authentication "guard" and password
+    | reset "broker" for your application. You may change these values
+    | as required, but they're a perfect start for most applications.
+    |
+    */
+
+    'defaults' => [
+        'guard' => env('AUTH_GUARD', 'web'),
+        'passwords' => env('AUTH_PASSWORD_BROKER', 'users'),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Guards
+    |--------------------------------------------------------------------------
+    |
+    | Next, you may define every authentication guard for your application.
+    | Of course, a great default configuration has been defined for you
+    | which utilizes session storage plus the Eloquent user provider.
+    |
+    | All authentication guards have a user provider, which defines how the
+    | users are actually retrieved out of your database or other storage
+    | system used by the application. Typically, Eloquent is utilized.
+    |
+    | Supported: "session"
+    |
+    */
+
+    'guards' => [
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | User Providers
+    |--------------------------------------------------------------------------
+    |
+    | All authentication guards have a user provider, which defines how the
+    | users are actually retrieved out of your database or other storage
+    | system used by the application. Typically, Eloquent is utilized.
+    |
+    | If you have multiple user tables or models you may configure multiple
+    | providers to represent the model / table. These providers may then
+    | be assigned to any extra authentication guards you have defined.
+    |
+    | Supported: "database", "eloquent"
+    |
+    */
+
+    'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\User::class),
+        ],
+
+        // 'users' => [
+        //     'driver' => 'database',
+        //     'table' => 'users',
+        // ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Resetting Passwords
+    |--------------------------------------------------------------------------
+    |
+    | These configuration options specify the behavior of Laravel's password
+    | reset functionality, including the table utilized for token storage
+    | and the user provider that is invoked to actually retrieve users.
+    |
+    | The expiry time is the number of minutes that each reset token will be
+    | considered valid. This security feature keeps tokens short-lived so
+    | they have less time to be guessed. You may change this as needed.
+    |
+    | The throttle setting is the number of seconds a user must wait before
+    | generating more password reset tokens. This prevents the user from
+    | quickly generating a very large amount of password reset tokens.
+    |
+    */
+
+    'passwords' => [
+        'users' => [
+            'provider' => 'users',
+            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Password Confirmation Timeout
+    |--------------------------------------------------------------------------
+    |
+    | Here you may define the amount of seconds before a password confirmation
+    | window expires and users are asked to re-enter their password via the
+    | confirmation screen. By default, the timeout lasts for three hours.
+    |
+    */
+
+    'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
+
+];
+</file>
+
+<file path="config/cache.php">
+<?php
+
+use Illuminate\Support\Str;
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Cache Store
+    |--------------------------------------------------------------------------
+    |
+    | This option controls the default cache store that will be used by the
+    | framework. This connection is utilized if another isn't explicitly
+    | specified when running a cache operation inside the application.
+    |
+    */
+
+    'default' => env('CACHE_STORE', 'database'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Cache Stores
+    |--------------------------------------------------------------------------
+    |
+    | Here you may define all of the cache "stores" for your application as
+    | well as their drivers. You may even define multiple stores for the
+    | same cache driver to group types of items stored in your caches.
+    |
+    | Supported drivers: "array", "database", "file", "memcached",
+    |                    "redis", "dynamodb", "octane", "null"
+    |
+    */
+
+    'stores' => [
+
+        'array' => [
+            'driver' => 'array',
+            'serialize' => false,
+        ],
+
+        'database' => [
+            'driver' => 'database',
+            'connection' => env('DB_CACHE_CONNECTION'),
+            'table' => env('DB_CACHE_TABLE', 'cache'),
+            'lock_connection' => env('DB_CACHE_LOCK_CONNECTION'),
+            'lock_table' => env('DB_CACHE_LOCK_TABLE'),
+        ],
+
+        'file' => [
+            'driver' => 'file',
+            'path' => storage_path('framework/cache/data'),
+            'lock_path' => storage_path('framework/cache/data'),
+        ],
+
+        'memcached' => [
+            'driver' => 'memcached',
+            'persistent_id' => env('MEMCACHED_PERSISTENT_ID'),
+            'sasl' => [
+                env('MEMCACHED_USERNAME'),
+                env('MEMCACHED_PASSWORD'),
+            ],
+            'options' => [
+                // Memcached::OPT_CONNECT_TIMEOUT => 2000,
+            ],
+            'servers' => [
+                [
+                    'host' => env('MEMCACHED_HOST', '127.0.0.1'),
+                    'port' => env('MEMCACHED_PORT', 11211),
+                    'weight' => 100,
+                ],
+            ],
+        ],
+
+        'redis' => [
+            'driver' => 'redis',
+            'connection' => env('REDIS_CACHE_CONNECTION', 'cache'),
+            'lock_connection' => env('REDIS_CACHE_LOCK_CONNECTION', 'default'),
+        ],
+
+        'dynamodb' => [
+            'driver' => 'dynamodb',
+            'key' => env('AWS_ACCESS_KEY_ID'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+            'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+            'table' => env('DYNAMODB_CACHE_TABLE', 'cache'),
+            'endpoint' => env('DYNAMODB_ENDPOINT'),
+        ],
+
+        'octane' => [
+            'driver' => 'octane',
+        ],
+
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Cache Key Prefix
+    |--------------------------------------------------------------------------
+    |
+    | When utilizing the APC, database, memcached, Redis, and DynamoDB cache
+    | stores, there might be other applications using the same cache. For
+    | that reason, you may prefix every cache key to avoid collisions.
+    |
+    */
+
+    'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_cache_'),
+
+];
+</file>
+
+<file path="config/database.php">
+<?php
+
+use Illuminate\Support\Str;
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Database Connection Name
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify which of the database connections below you wish
+    | to use as your default connection for database operations. This is
+    | the connection which will be utilized unless another connection
+    | is explicitly specified when you execute a query / statement.
+    |
+    */
+
+    'default' => env('DB_CONNECTION', 'sqlite'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Database Connections
+    |--------------------------------------------------------------------------
+    |
+    | Below are all of the database connections defined for your application.
+    | An example configuration is provided for each database system which
+    | is supported by Laravel. You're free to add / remove connections.
+    |
+    */
+
+    'connections' => [
+
+        'sqlite' => [
+            'driver' => 'sqlite',
+            'url' => env('DB_URL'),
+            'database' => env('DB_DATABASE', database_path('database.sqlite')),
+            'prefix' => '',
+            'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
+            'busy_timeout' => null,
+            'journal_mode' => null,
+            'synchronous' => null,
+        ],
+
+        'mysql' => [
+            'driver' => 'mysql',
+            'url' => env('DB_URL'),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', 'laravel'),
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', ''),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => env('DB_CHARSET', 'utf8mb4'),
+            'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
+        'mariadb' => [
+            'driver' => 'mariadb',
+            'url' => env('DB_URL'),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', 'laravel'),
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', ''),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => env('DB_CHARSET', 'utf8mb4'),
+            'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
+        'pgsql' => [
+            'driver' => 'pgsql',
+            'url' => env('DB_URL'),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '5432'),
+            'database' => env('DB_DATABASE', 'laravel'),
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => env('DB_CHARSET', 'utf8'),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'search_path' => 'public',
+            'sslmode' => 'prefer',
+        ],
+
+        'sqlsrv' => [
+            'driver' => 'sqlsrv',
+            'url' => env('DB_URL'),
+            'host' => env('DB_HOST', 'localhost'),
+            'port' => env('DB_PORT', '1433'),
+            'database' => env('DB_DATABASE', 'laravel'),
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => env('DB_CHARSET', 'utf8'),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            // 'encrypt' => env('DB_ENCRYPT', 'yes'),
+            // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
+        ],
+
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Migration Repository Table
+    |--------------------------------------------------------------------------
+    |
+    | This table keeps track of all the migrations that have already run for
+    | your application. Using this information, we can determine which of
+    | the migrations on disk haven't actually been run on the database.
+    |
+    */
+
+    'migrations' => [
+        'table' => 'migrations',
+        'update_date_on_publish' => true,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Redis Databases
+    |--------------------------------------------------------------------------
+    |
+    | Redis is an open source, fast, and advanced key-value store that also
+    | provides a richer body of commands than a typical key-value system
+    | such as Memcached. You may define your connection settings here.
+    |
+    */
+
+    'redis' => [
+
+        'client' => env('REDIS_CLIENT', 'phpredis'),
+
+        'options' => [
+            'cluster' => env('REDIS_CLUSTER', 'redis'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'persistent' => env('REDIS_PERSISTENT', false),
+        ],
+
+        'default' => [
+            'url' => env('REDIS_URL'),
+            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'username' => env('REDIS_USERNAME'),
+            'password' => env('REDIS_PASSWORD'),
+            'port' => env('REDIS_PORT', '6379'),
+            'database' => env('REDIS_DB', '0'),
+            'max_retries' => env('REDIS_MAX_RETRIES', 3),
+            'backoff_algorithm' => env('REDIS_BACKOFF_ALGORITHM', 'decorrelated_jitter'),
+            'backoff_base' => env('REDIS_BACKOFF_BASE', 100),
+            'backoff_cap' => env('REDIS_BACKOFF_CAP', 1000),
+        ],
+
+        'cache' => [
+            'url' => env('REDIS_URL'),
+            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'username' => env('REDIS_USERNAME'),
+            'password' => env('REDIS_PASSWORD'),
+            'port' => env('REDIS_PORT', '6379'),
+            'database' => env('REDIS_CACHE_DB', '1'),
+            'max_retries' => env('REDIS_MAX_RETRIES', 3),
+            'backoff_algorithm' => env('REDIS_BACKOFF_ALGORITHM', 'decorrelated_jitter'),
+            'backoff_base' => env('REDIS_BACKOFF_BASE', 100),
+            'backoff_cap' => env('REDIS_BACKOFF_CAP', 1000),
+        ],
+
+    ],
+
+];
+</file>
+
+<file path="config/filesystems.php">
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Filesystem Disk
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify the default filesystem disk that should be used
+    | by the framework. The "local" disk, as well as a variety of cloud
+    | based disks are available to your application for file storage.
+    |
+    */
+
+    'default' => env('FILESYSTEM_DISK', 'local'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Filesystem Disks
+    |--------------------------------------------------------------------------
+    |
+    | Below you may configure as many filesystem disks as necessary, and you
+    | may even configure multiple disks for the same driver. Examples for
+    | most supported storage drivers are configured here for reference.
+    |
+    | Supported drivers: "local", "ftp", "sftp", "s3"
+    |
+    */
+
+    'disks' => [
+
+        'local' => [
+            'driver' => 'local',
+            'root' => storage_path('app/private'),
+            'serve' => true,
+            'throw' => false,
+            'report' => false,
+        ],
+
+        'public' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
+        's3' => [
+            'driver' => 's3',
+            'key' => env('AWS_ACCESS_KEY_ID'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+            'region' => env('AWS_DEFAULT_REGION'),
+            'bucket' => env('AWS_BUCKET'),
+            'url' => env('AWS_URL'),
+            'endpoint' => env('AWS_ENDPOINT'),
+            'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
+            'throw' => false,
+            'report' => false,
+        ],
+
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Symbolic Links
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure the symbolic links that will be created when the
+    | `storage:link` Artisan command is executed. The array keys should be
+    | the locations of the links and the values should be their targets.
+    |
+    */
+
+    'links' => [
+        public_path('storage') => storage_path('app/public'),
+    ],
+
+];
+</file>
+
+<file path="config/fortify.php">
+<?php
+
+use Laravel\Fortify\Features;
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Fortify Guard
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify which authentication guard Fortify will use while
+    | authenticating users. This value should correspond with one of your
+    | guards that is already present in your "auth" configuration file.
+    |
+    */
+
+    'guard' => 'web',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Fortify Password Broker
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify which password broker Fortify can use when a user
+    | is resetting their password. This configured value should match one
+    | of your password brokers setup in your "auth" configuration file.
+    |
+    */
+
+    'passwords' => 'users',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Username / Email
+    |--------------------------------------------------------------------------
+    |
+    | This value defines which model attribute should be considered as your
+    | application's "username" field. Typically, this might be the email
+    | address of the users but you are free to change this value here.
+    |
+    | Out of the box, Fortify expects forgot password and reset password
+    | requests to have a field named 'email'. If the application uses
+    | another name for the field you may define it below as needed.
+    |
+    */
+
+    'username' => 'email',
+
+    'email' => 'email',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Lowercase Usernames
+    |--------------------------------------------------------------------------
+    |
+    | This value defines whether usernames should be lowercased before saving
+    | them in the database, as some database system string fields are case
+    | sensitive. You may disable this for your application if necessary.
+    |
+    */
+
+    'lowercase_usernames' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Home Path
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure the path where users will get redirected during
+    | authentication or password reset when the operations are successful
+    | and the user is authenticated. You are free to change this value.
+    |
+    */
+
+    'home' => '/dashboard',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Fortify Routes Prefix / Subdomain
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify which prefix Fortify will assign to all the routes
+    | that it registers with the application. If necessary, you may change
+    | subdomain under which all of the Fortify routes will be available.
+    |
+    */
+
+    'prefix' => '',
+
+    'domain' => null,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Fortify Routes Middleware
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify which middleware Fortify will assign to the routes
+    | that it registers with the application. If necessary, you may change
+    | these middleware but typically this provided default is preferred.
+    |
+    */
+
+    'middleware' => ['web'],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Rate Limiting
+    |--------------------------------------------------------------------------
+    |
+    | By default, Fortify will throttle logins to five requests per minute for
+    | every email and IP address combination. However, if you would like to
+    | specify a custom rate limiter to call then you may specify it here.
+    |
+    */
+
+    'limiters' => [
+        'login' => 'login',
+        'two-factor' => 'two-factor',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Register View Routes
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify if the routes returning views should be disabled as
+    | you may not need them when building your own application. This may be
+    | especially true if you're writing a custom single-page application.
+    |
+    */
+
+    'views' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Features
+    |--------------------------------------------------------------------------
+    |
+    | Some of the Fortify features are optional. You may disable the features
+    | by removing them from this array. You're free to only remove some of
+    | these features or you can even remove all of these if you need to.
+    |
+    */
+
+    'features' => [
+        // Features::registration(),
+        // Features::resetPasswords(),
+        // Features::emailVerification(),
+        // Features::updateProfileInformation(),
+        // Features::updatePasswords(),
+        Features::twoFactorAuthentication([
+            'confirm' => true,
+            'confirmPassword' => true,
+            // 'window' => 0,
+        ]),
+    ],
+
+];
+</file>
+
+<file path="config/logging.php">
+<?php
+
+use Monolog\Handler\NullHandler;
+use Monolog\Handler\StreamHandler;
+use Monolog\Handler\SyslogUdpHandler;
+use Monolog\Processor\PsrLogMessageProcessor;
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Log Channel
+    |--------------------------------------------------------------------------
+    |
+    | This option defines the default log channel that is utilized to write
+    | messages to your logs. The value provided here should match one of
+    | the channels present in the list of "channels" configured below.
+    |
+    */
+
+    'default' => env('LOG_CHANNEL', 'stack'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Deprecations Log Channel
+    |--------------------------------------------------------------------------
+    |
+    | This option controls the log channel that should be used to log warnings
+    | regarding deprecated PHP and library features. This allows you to get
+    | your application ready for upcoming major versions of dependencies.
+    |
+    */
+
+    'deprecations' => [
+        'channel' => env('LOG_DEPRECATIONS_CHANNEL', 'null'),
+        'trace' => env('LOG_DEPRECATIONS_TRACE', false),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Log Channels
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure the log channels for your application. Laravel
+    | utilizes the Monolog PHP logging library, which includes a variety
+    | of powerful log handlers and formatters that you're free to use.
+    |
+    | Available drivers: "single", "daily", "slack", "syslog",
+    |                    "errorlog", "monolog", "custom", "stack"
+    |
+    */
+
+    'channels' => [
+
+        'stack' => [
+            'driver' => 'stack',
+            'channels' => explode(',', env('LOG_STACK', 'single')),
+            'ignore_exceptions' => false,
+        ],
+
+        'single' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/laravel.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'replace_placeholders' => true,
+        ],
+
+        'daily' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/laravel.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => env('LOG_DAILY_DAYS', 14),
+            'replace_placeholders' => true,
+        ],
+
+        'slack' => [
+            'driver' => 'slack',
+            'url' => env('LOG_SLACK_WEBHOOK_URL'),
+            'username' => env('LOG_SLACK_USERNAME', 'Laravel Log'),
+            'emoji' => env('LOG_SLACK_EMOJI', ':boom:'),
+            'level' => env('LOG_LEVEL', 'critical'),
+            'replace_placeholders' => true,
+        ],
+
+        'papertrail' => [
+            'driver' => 'monolog',
+            'level' => env('LOG_LEVEL', 'debug'),
+            'handler' => env('LOG_PAPERTRAIL_HANDLER', SyslogUdpHandler::class),
+            'handler_with' => [
+                'host' => env('PAPERTRAIL_URL'),
+                'port' => env('PAPERTRAIL_PORT'),
+                'connectionString' => 'tls://'.env('PAPERTRAIL_URL').':'.env('PAPERTRAIL_PORT'),
+            ],
+            'processors' => [PsrLogMessageProcessor::class],
+        ],
+
+        'stderr' => [
+            'driver' => 'monolog',
+            'level' => env('LOG_LEVEL', 'debug'),
+            'handler' => StreamHandler::class,
+            'formatter' => env('LOG_STDERR_FORMATTER'),
+            'with' => [
+                'stream' => 'php://stderr',
+            ],
+            'processors' => [PsrLogMessageProcessor::class],
+        ],
+
+        'syslog' => [
+            'driver' => 'syslog',
+            'level' => env('LOG_LEVEL', 'debug'),
+            'facility' => env('LOG_SYSLOG_FACILITY', LOG_USER),
+            'replace_placeholders' => true,
+        ],
+
+        'errorlog' => [
+            'driver' => 'errorlog',
+            'level' => env('LOG_LEVEL', 'debug'),
+            'replace_placeholders' => true,
+        ],
+
+        'null' => [
+            'driver' => 'monolog',
+            'handler' => NullHandler::class,
+        ],
+
+        'emergency' => [
+            'path' => storage_path('logs/laravel.log'),
+        ],
+
+    ],
+
+];
+</file>
+
+<file path="config/mail.php">
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Mailer
+    |--------------------------------------------------------------------------
+    |
+    | This option controls the default mailer that is used to send all email
+    | messages unless another mailer is explicitly specified when sending
+    | the message. All additional mailers can be configured within the
+    | "mailers" array. Examples of each type of mailer are provided.
+    |
+    */
+
+    'default' => env('MAIL_MAILER', 'log'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Mailer Configurations
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure all of the mailers used by your application plus
+    | their respective settings. Several examples have been configured for
+    | you and you are free to add your own as your application requires.
+    |
+    | Laravel supports a variety of mail "transport" drivers that can be used
+    | when delivering an email. You may specify which one you're using for
+    | your mailers below. You may also add additional mailers if needed.
+    |
+    | Supported: "smtp", "sendmail", "mailgun", "ses", "ses-v2",
+    |            "postmark", "resend", "log", "array",
+    |            "failover", "roundrobin"
+    |
+    */
+
+    'mailers' => [
+
+        'smtp' => [
+            'transport' => 'smtp',
+            'scheme' => env('MAIL_SCHEME'),
+            'url' => env('MAIL_URL'),
+            'host' => env('MAIL_HOST', '127.0.0.1'),
+            'port' => env('MAIL_PORT', 2525),
+            'username' => env('MAIL_USERNAME'),
+            'password' => env('MAIL_PASSWORD'),
+            'timeout' => null,
+            'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url(env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
+        ],
+
+        'ses' => [
+            'transport' => 'ses',
+        ],
+
+        'postmark' => [
+            'transport' => 'postmark',
+            // 'message_stream_id' => env('POSTMARK_MESSAGE_STREAM_ID'),
+            // 'client' => [
+            //     'timeout' => 5,
+            // ],
+        ],
+
+        'resend' => [
+            'transport' => 'resend',
+        ],
+
+        'sendmail' => [
+            'transport' => 'sendmail',
+            'path' => env('MAIL_SENDMAIL_PATH', '/usr/sbin/sendmail -bs -i'),
+        ],
+
+        'log' => [
+            'transport' => 'log',
+            'channel' => env('MAIL_LOG_CHANNEL'),
+        ],
+
+        'array' => [
+            'transport' => 'array',
+        ],
+
+        'failover' => [
+            'transport' => 'failover',
+            'mailers' => [
+                'smtp',
+                'log',
+            ],
+        ],
+
+        'roundrobin' => [
+            'transport' => 'roundrobin',
+            'mailers' => [
+                'ses',
+                'postmark',
+            ],
+        ],
+
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Global "From" Address
+    |--------------------------------------------------------------------------
+    |
+    | You may wish for all emails sent by your application to be sent from
+    | the same address. Here you may specify a name and address that is
+    | used globally for all emails that are sent by your application.
+    |
+    */
+
+    'from' => [
+        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+        'name' => env('MAIL_FROM_NAME', 'Example'),
+    ],
+
+];
+</file>
+
+<file path="config/queue.php">
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Queue Connection Name
+    |--------------------------------------------------------------------------
+    |
+    | Laravel's queue supports a variety of backends via a single, unified
+    | API, giving you convenient access to each backend using identical
+    | syntax for each. The default queue connection is defined below.
+    |
+    */
+
+    'default' => env('QUEUE_CONNECTION', 'database'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Queue Connections
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure the connection options for every queue backend
+    | used by your application. An example configuration is provided for
+    | each backend supported by Laravel. You're also free to add more.
+    |
+    | Drivers: "sync", "database", "beanstalkd", "sqs", "redis", "null"
+    |
+    */
+
+    'connections' => [
+
+        'sync' => [
+            'driver' => 'sync',
+        ],
+
+        'database' => [
+            'driver' => 'database',
+            'connection' => env('DB_QUEUE_CONNECTION'),
+            'table' => env('DB_QUEUE_TABLE', 'jobs'),
+            'queue' => env('DB_QUEUE', 'default'),
+            'retry_after' => (int) env('DB_QUEUE_RETRY_AFTER', 90),
+            'after_commit' => false,
+        ],
+
+        'beanstalkd' => [
+            'driver' => 'beanstalkd',
+            'host' => env('BEANSTALKD_QUEUE_HOST', 'localhost'),
+            'queue' => env('BEANSTALKD_QUEUE', 'default'),
+            'retry_after' => (int) env('BEANSTALKD_QUEUE_RETRY_AFTER', 90),
+            'block_for' => 0,
+            'after_commit' => false,
+        ],
+
+        'sqs' => [
+            'driver' => 'sqs',
+            'key' => env('AWS_ACCESS_KEY_ID'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+            'prefix' => env('SQS_PREFIX', 'https://sqs.us-east-1.amazonaws.com/your-account-id'),
+            'queue' => env('SQS_QUEUE', 'default'),
+            'suffix' => env('SQS_SUFFIX'),
+            'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+            'after_commit' => false,
+        ],
+
+        'redis' => [
+            'driver' => 'redis',
+            'connection' => env('REDIS_QUEUE_CONNECTION', 'default'),
+            'queue' => env('REDIS_QUEUE', 'default'),
+            'retry_after' => (int) env('REDIS_QUEUE_RETRY_AFTER', 90),
+            'block_for' => null,
+            'after_commit' => false,
+        ],
+
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Job Batching
+    |--------------------------------------------------------------------------
+    |
+    | The following options configure the database and table that store job
+    | batching information. These options can be updated to any database
+    | connection and table which has been defined by your application.
+    |
+    */
+
+    'batching' => [
+        'database' => env('DB_CONNECTION', 'sqlite'),
+        'table' => 'job_batches',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Failed Queue Jobs
+    |--------------------------------------------------------------------------
+    |
+    | These options configure the behavior of failed queue job logging so you
+    | can control how and where failed jobs are stored. Laravel ships with
+    | support for storing failed jobs in a simple file or in a database.
+    |
+    | Supported drivers: "database-uuids", "dynamodb", "file", "null"
+    |
+    */
+
+    'failed' => [
+        'driver' => env('QUEUE_FAILED_DRIVER', 'database-uuids'),
+        'database' => env('DB_CONNECTION', 'sqlite'),
+        'table' => 'failed_jobs',
+    ],
+
+];
+</file>
+
+<file path="config/services.php">
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Third Party Services
+    |--------------------------------------------------------------------------
+    |
+    | This file is for storing the credentials for third party services such
+    | as Mailgun, Postmark, AWS and more. This file provides the de facto
+    | location for this type of information, allowing packages to have
+    | a conventional file to locate the various service credentials.
+    |
+    */
+
+    'postmark' => [
+        'token' => env('POSTMARK_TOKEN'),
+    ],
+
+    'ses' => [
+        'key' => env('AWS_ACCESS_KEY_ID'),
+        'secret' => env('AWS_SECRET_ACCESS_KEY'),
+        'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+    ],
+
+    'resend' => [
+        'key' => env('RESEND_KEY'),
+    ],
+
+    'slack' => [
+        'notifications' => [
+            'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),
+            'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
+        ],
+    ],
+
+];
+</file>
+
+<file path="config/session.php">
+<?php
+
+use Illuminate\Support\Str;
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Session Driver
+    |--------------------------------------------------------------------------
+    |
+    | This option determines the default session driver that is utilized for
+    | incoming requests. Laravel supports a variety of storage options to
+    | persist session data. Database storage is a great default choice.
+    |
+    | Supported: "file", "cookie", "database", "apc",
+    |            "memcached", "redis", "dynamodb", "array"
+    |
+    */
+
+    'driver' => env('SESSION_DRIVER', 'database'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Lifetime
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify the number of minutes that you wish the session
+    | to be allowed to remain idle before it expires. If you want them
+    | to expire immediately when the browser is closed then you may
+    | indicate that via the expire_on_close configuration option.
+    |
+    */
+
+    'lifetime' => (int) env('SESSION_LIFETIME', 120),
+
+    'expire_on_close' => env('SESSION_EXPIRE_ON_CLOSE', false),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Encryption
+    |--------------------------------------------------------------------------
+    |
+    | This option allows you to easily specify that all of your session data
+    | should be encrypted before it's stored. All encryption is performed
+    | automatically by Laravel and you may use the session like normal.
+    |
+    */
+
+    'encrypt' => env('SESSION_ENCRYPT', false),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session File Location
+    |--------------------------------------------------------------------------
+    |
+    | When utilizing the "file" session driver, the session files are placed
+    | on disk. The default storage location is defined here; however, you
+    | are free to provide another location where they should be stored.
+    |
+    */
+
+    'files' => storage_path('framework/sessions'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Database Connection
+    |--------------------------------------------------------------------------
+    |
+    | When using the "database" or "redis" session drivers, you may specify a
+    | connection that should be used to manage these sessions. This should
+    | correspond to a connection in your database configuration options.
+    |
+    */
+
+    'connection' => env('SESSION_CONNECTION'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Database Table
+    |--------------------------------------------------------------------------
+    |
+    | When using the "database" session driver, you may specify the table to
+    | be used to store sessions. Of course, a sensible default is defined
+    | for you; however, you're welcome to change this to another table.
+    |
+    */
+
+    'table' => env('SESSION_TABLE', 'sessions'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Cache Store
+    |--------------------------------------------------------------------------
+    |
+    | When using one of the framework's cache driven session backends, you may
+    | define the cache store which should be used to store the session data
+    | between requests. This must match one of your defined cache stores.
+    |
+    | Affects: "apc", "dynamodb", "memcached", "redis"
+    |
+    */
+
+    'store' => env('SESSION_STORE'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Sweeping Lottery
+    |--------------------------------------------------------------------------
+    |
+    | Some session drivers must manually sweep their storage location to get
+    | rid of old sessions from storage. Here are the chances that it will
+    | happen on a given request. By default, the odds are 2 out of 100.
+    |
+    */
+
+    'lottery' => [2, 100],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Cookie Name
+    |--------------------------------------------------------------------------
+    |
+    | Here you may change the name of the session cookie that is created by
+    | the framework. Typically, you should not need to change this value
+    | since doing so does not grant a meaningful security improvement.
+    |
+    */
+
+    'cookie' => env(
+        'SESSION_COOKIE',
+        Str::slug(env('APP_NAME', 'laravel'), '_').'_session'
+    ),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Cookie Path
+    |--------------------------------------------------------------------------
+    |
+    | The session cookie path determines the path for which the cookie will
+    | be regarded as available. Typically, this will be the root path of
+    | your application, but you're free to change this when necessary.
+    |
+    */
+
+    'path' => env('SESSION_PATH', '/'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Cookie Domain
+    |--------------------------------------------------------------------------
+    |
+    | This value determines the domain and subdomains the session cookie is
+    | available to. By default, the cookie will be available to the root
+    | domain and all subdomains. Typically, this shouldn't be changed.
+    |
+    */
+
+    'domain' => env('SESSION_DOMAIN'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | HTTPS Only Cookies
+    |--------------------------------------------------------------------------
+    |
+    | By setting this option to true, session cookies will only be sent back
+    | to the server if the browser has a HTTPS connection. This will keep
+    | the cookie from being sent to you when it can't be done securely.
+    |
+    */
+
+    'secure' => env('SESSION_SECURE_COOKIE'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | HTTP Access Only
+    |--------------------------------------------------------------------------
+    |
+    | Setting this value to true will prevent JavaScript from accessing the
+    | value of the cookie and the cookie will only be accessible through
+    | the HTTP protocol. It's unlikely you should disable this option.
+    |
+    */
+
+    'http_only' => env('SESSION_HTTP_ONLY', true),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Same-Site Cookies
+    |--------------------------------------------------------------------------
+    |
+    | This option determines how your cookies behave when cross-site requests
+    | take place, and can be used to mitigate CSRF attacks. By default, we
+    | will set this value to "lax" to permit secure cross-site requests.
+    |
+    | See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#samesitesamesite-value
+    |
+    | Supported: "lax", "strict", "none", null
+    |
+    */
+
+    'same_site' => env('SESSION_SAME_SITE', 'lax'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Partitioned Cookies
+    |--------------------------------------------------------------------------
+    |
+    | Setting this value to true will tie the cookie to the top-level site for
+    | a cross-site context. Partitioned cookies are accepted by the browser
+    | when flagged "secure" and the Same-Site attribute is set to "none".
+    |
+    */
+
+    'partitioned' => env('SESSION_PARTITIONED_COOKIE', false),
+
+];
+</file>
+
+<file path="database/.gitignore">
+*.sqlite*
+</file>
+
+<file path="database/factories/UserFactory.php">
+<?php
+
+namespace Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ */
+class UserFactory extends Factory
+{
+    /**
+     * The current password being used by the factory.
+     */
+    protected static ?string $password;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
+            'email_verified_at' => now(),
+            'password' => static::$password ??= 'password',
+            'remember_token' => Str::random(10),
+            'two_factor_secret' => Str::random(10),
+            'two_factor_recovery_codes' => Str::random(10),
+            'two_factor_confirmed_at' => now(),
+        ];
+    }
+
+    /**
+     * Indicate that the model's email address should be unverified.
+     */
+    public function unverified(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'email_verified_at' => null,
+        ]);
+    }
+
+    /**
+     * Indicate that the model does not have two-factor authentication configured.
+     */
+    public function withoutTwoFactor(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'two_factor_secret' => null,
+            'two_factor_recovery_codes' => null,
+            'two_factor_confirmed_at' => null,
+        ]);
+    }
+}
+</file>
+
+<file path="database/migrations/0001_01_01_000000_create_users_table.php">
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+        });
+
+        Schema::create('password_reset_tokens', function (Blueprint $table) {
+            $table->string('email')->primary();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
+        });
+
+        Schema::create('sessions', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->foreignId('user_id')->nullable()->index();
+            $table->string('ip_address', 45)->nullable();
+            $table->text('user_agent')->nullable();
+            $table->longText('payload');
+            $table->integer('last_activity')->index();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('users');
+        Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('sessions');
+    }
+};
+</file>
+
+<file path="database/migrations/0001_01_01_000001_create_cache_table.php">
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('cache', function (Blueprint $table) {
+            $table->string('key')->primary();
+            $table->mediumText('value');
+            $table->integer('expiration');
+        });
+
+        Schema::create('cache_locks', function (Blueprint $table) {
+            $table->string('key')->primary();
+            $table->string('owner');
+            $table->integer('expiration');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('cache');
+        Schema::dropIfExists('cache_locks');
+    }
+};
+</file>
+
+<file path="database/migrations/0001_01_01_000002_create_jobs_table.php">
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('jobs', function (Blueprint $table) {
+            $table->id();
+            $table->string('queue')->index();
+            $table->longText('payload');
+            $table->unsignedTinyInteger('attempts');
+            $table->unsignedInteger('reserved_at')->nullable();
+            $table->unsignedInteger('available_at');
+            $table->unsignedInteger('created_at');
+        });
+
+        Schema::create('job_batches', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->string('name');
+            $table->integer('total_jobs');
+            $table->integer('pending_jobs');
+            $table->integer('failed_jobs');
+            $table->longText('failed_job_ids');
+            $table->mediumText('options')->nullable();
+            $table->integer('cancelled_at')->nullable();
+            $table->integer('created_at');
+            $table->integer('finished_at')->nullable();
+        });
+
+        Schema::create('failed_jobs', function (Blueprint $table) {
+            $table->id();
+            $table->string('uuid')->unique();
+            $table->text('connection');
+            $table->text('queue');
+            $table->longText('payload');
+            $table->longText('exception');
+            $table->timestamp('failed_at')->useCurrent();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('jobs');
+        Schema::dropIfExists('job_batches');
+        Schema::dropIfExists('failed_jobs');
+    }
+};
+</file>
+
+<file path="database/migrations/2025_09_22_145432_add_two_factor_columns_to_users_table.php">
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->text('two_factor_secret')->after('password')->nullable();
+            $table->text('two_factor_recovery_codes')->after('two_factor_secret')->nullable();
+            $table->timestamp('two_factor_confirmed_at')->after('two_factor_recovery_codes')->nullable();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn([
+                'two_factor_secret',
+                'two_factor_recovery_codes',
+                'two_factor_confirmed_at',
+            ]);
+        });
+    }
+};
+</file>
+
+<file path="database/seeders/DatabaseSeeder.php">
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\User;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+class DatabaseSeeder extends Seeder
+{
+    /**
+     * Seed the application's database.
+     */
+    public function run(): void
+    {
+        // User::factory(10)->create();
+
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]);
+    }
+}
+</file>
+
+<file path="package.json">
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite"
+    },
+    "dependencies": {
+        "@tailwindcss/vite": "^4.1.11",
+        "autoprefixer": "^10.4.20",
+        "axios": "^1.7.4",
+        "concurrently": "^9.0.1",
+        "laravel-vite-plugin": "^2.0",
+        "tailwindcss": "^4.0.7",
+        "vite": "^7.0.4"
+    },
+    "optionalDependencies": {
+        "@rollup/rollup-linux-x64-gnu": "4.9.5",
+        "@tailwindcss/oxide-linux-x64-gnu": "^4.0.1",
+        "lightningcss-linux-x64-gnu": "^1.29.1"
+    }
+}
+</file>
+
+<file path="phpunit.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+>
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Feature">
+            <directory>tests/Feature</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory>app</directory>
+        </include>
+    </source>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="APP_MAINTENANCE_DRIVER" value="file"/>
+        <env name="BCRYPT_ROUNDS" value="4"/>
+        <env name="CACHE_STORE" value="array"/>
+        <env name="DB_CONNECTION" value="sqlite"/>
+        <env name="DB_DATABASE" value=":memory:"/>
+        <env name="MAIL_MAILER" value="array"/>
+        <env name="PULSE_ENABLED" value="false"/>
+        <env name="QUEUE_CONNECTION" value="sync"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="TELESCOPE_ENABLED" value="false"/>
+    </php>
+</phpunit>
+</file>
+
+<file path="public/.htaccess">
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Handle X-XSRF-Token Header
+    RewriteCond %{HTTP:x-xsrf-token} .
+    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+</file>
+
+<file path="public/favicon.svg">
+<svg width="166" height="166" viewBox="0 0 166 166" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M162.041 38.7592C162.099 38.9767 162.129 39.201 162.13 39.4264V74.4524C162.13 74.9019 162.011 75.3435 161.786 75.7325C161.561 76.1216 161.237 76.4442 160.847 76.6678L131.462 93.5935V127.141C131.462 128.054 130.977 128.897 130.186 129.357L68.8474 164.683C68.707 164.763 68.5538 164.814 68.4007 164.868C68.3432 164.887 68.289 164.922 68.2284 164.938C67.7996 165.051 67.3489 165.051 66.9201 164.938C66.8499 164.919 66.7861 164.881 66.7191 164.855C66.5787 164.804 66.4319 164.76 66.2979 164.683L4.97219 129.357C4.58261 129.133 4.2589 128.81 4.0337 128.421C3.8085 128.032 3.68976 127.591 3.68945 127.141L3.68945 22.0634C3.68945 21.8336 3.72136 21.6101 3.7788 21.393C3.79794 21.3196 3.84262 21.2526 3.86814 21.1791C3.91601 21.0451 3.96068 20.9078 4.03088 20.7833C4.07874 20.7003 4.14894 20.6333 4.20638 20.5566C4.27977 20.4545 4.34678 20.3491 4.43293 20.2598C4.50632 20.1863 4.60205 20.1321 4.68501 20.0682C4.77755 19.9916 4.86051 19.9086 4.96581 19.848L35.6334 2.18492C36.0217 1.96139 36.4618 1.84375 36.9098 1.84375C37.3578 1.84375 37.7979 1.96139 38.1862 2.18492L68.8506 19.848H68.857C68.9591 19.9118 69.0452 19.9916 69.1378 20.065C69.2207 20.1289 69.3133 20.1863 69.3867 20.2566C69.476 20.3491 69.5398 20.4545 69.6164 20.5566C69.6707 20.6333 69.7441 20.7003 69.7887 20.7833C69.8621 20.911 69.9036 21.0451 69.9546 21.1791C69.9802 21.2526 70.0248 21.3196 70.044 21.3962C70.1027 21.6138 70.1328 21.8381 70.1333 22.0634V87.6941L95.686 72.9743V39.4232C95.686 39.1997 95.7179 38.9731 95.7753 38.7592C95.7977 38.6826 95.8391 38.6155 95.8647 38.5421C95.9157 38.408 95.9604 38.2708 96.0306 38.1463C96.0785 38.0633 96.1487 37.9962 96.2029 37.9196C96.2795 37.8175 96.3433 37.7121 96.4326 37.6227C96.506 37.5493 96.5986 37.495 96.6815 37.4312C96.7773 37.3546 96.8602 37.2716 96.9623 37.2109L127.633 19.5479C128.021 19.324 128.461 19.2062 128.91 19.2062C129.358 19.2062 129.798 19.324 130.186 19.5479L160.85 37.2109C160.959 37.2748 161.042 37.3546 161.137 37.428C161.217 37.4918 161.31 37.5493 161.383 37.6195C161.473 37.7121 161.536 37.8175 161.613 37.9196C161.67 37.9962 161.741 38.0633 161.785 38.1463C161.859 38.2708 161.9 38.408 161.951 38.5421C161.98 38.6155 162.021 38.6826 162.041 38.7592ZM157.018 72.9743V43.8477L146.287 50.028L131.462 58.5675V87.6941L157.021 72.9743H157.018ZM126.354 125.663V96.5176L111.771 104.85L70.1301 128.626V158.046L126.354 125.663ZM8.80126 26.4848V125.663L65.0183 158.043V128.629L35.6494 112L35.6398 111.994L35.6271 111.988C35.5281 111.93 35.4452 111.847 35.3526 111.777C35.2729 111.713 35.1803 111.662 35.1101 111.592L35.1038 111.582C35.0208 111.502 34.9634 111.403 34.8932 111.314C34.8293 111.228 34.7528 111.154 34.7017 111.065L34.6985 111.055C34.6411 110.96 34.606 110.845 34.5645 110.736C34.523 110.64 34.4688 110.551 34.4432 110.449C34.4113 110.328 34.4049 110.197 34.3922 110.072C34.3794 109.976 34.3539 109.881 34.3539 109.785V109.778V41.2045L19.5322 32.6619L8.80126 26.4848ZM36.913 7.35007L11.3635 22.0634L36.9066 36.7768L62.4529 22.0602L36.9066 7.35007H36.913ZM50.1999 99.1736L65.0215 90.6374V26.4848L54.2906 32.6651L39.4657 41.2045V105.357L50.1999 99.1736ZM128.91 24.713L103.363 39.4264L128.91 54.1397L154.453 39.4232L128.91 24.713ZM126.354 58.5675L111.529 50.028L100.798 43.8477V72.9743L115.619 81.5106L126.354 87.6941V58.5675ZM67.5711 124.205L105.042 102.803L123.772 92.109L98.2451 77.4053L68.8538 94.3341L42.0663 109.762L67.5711 124.205Z" fill="#FF2D20"/>
+</svg>
+</file>
+
+<file path="public/index.php">
+<?php
+
+use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
+
+define('LARAVEL_START', microtime(true));
+
+// Determine if the application is in maintenance mode...
+if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
+    require $maintenance;
+}
+
+// Register the Composer autoloader...
+require __DIR__.'/../vendor/autoload.php';
+
+// Bootstrap Laravel and handle the request...
+/** @var Application $app */
+$app = require_once __DIR__.'/../bootstrap/app.php';
+
+$app->handleRequest(Request::capture());
+</file>
+
+<file path="public/robots.txt">
+User-agent: *
+Disallow:
+</file>
+
+<file path="resources/css/app.css">
+@import 'tailwindcss';
+@import '../../vendor/livewire/flux/dist/flux.css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
+@source '../../vendor/livewire/flux/stubs/**/*.blade.php';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --color-zinc-50: #fafafa;
+    --color-zinc-100: #f5f5f5;
+    --color-zinc-200: #e5e5e5;
+    --color-zinc-300: #d4d4d4;
+    --color-zinc-400: #a3a3a3;
+    --color-zinc-500: #737373;
+    --color-zinc-600: #525252;
+    --color-zinc-700: #404040;
+    --color-zinc-800: #262626;
+    --color-zinc-900: #171717;
+    --color-zinc-950: #0a0a0a;
+
+    --color-accent: var(--color-neutral-800);
+    --color-accent-content: var(--color-neutral-800);
+    --color-accent-foreground: var(--color-white);
+}
+
+@layer theme {
+    .dark {
+        --color-accent: var(--color-white);
+        --color-accent-content: var(--color-white);
+        --color-accent-foreground: var(--color-neutral-800);
+    }
+}
+
+@layer base {
+
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+[data-flux-field]:not(ui-radio, ui-checkbox) {
+    @apply grid gap-2;
+}
+
+[data-flux-label] {
+    @apply  !mb-0 !leading-tight;
+}
+
+input:focus[data-flux-control],
+textarea:focus[data-flux-control],
+select:focus[data-flux-control] {
+    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
+}
+
+/* \[:where(&)\]:size-4 {
+    @apply size-4;
+} */
+</file>
+
+<file path="resources/views/components/action-message.blade.php">
+@props([
+    'on',
+])
+
+<div
+    x-data="{ shown: false, timeout: null }"
+    x-init="@this.on('{{ $on }}', () => { clearTimeout(timeout); shown = true; timeout = setTimeout(() => { shown = false }, 2000); })"
+    x-show.transition.out.opacity.duration.1500ms="shown"
+    x-transition:leave.opacity.duration.1500ms
+    style="display: none"
+    {{ $attributes->merge(['class' => 'text-sm']) }}
+>
+    {{ $slot->isEmpty() ? __('Saved.') : $slot }}
+</div>
+</file>
+
+<file path="resources/views/components/app-logo-icon.blade.php">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 42" {{ $attributes }}>
+    <path 
+        fill="currentColor" 
+        fill-rule="evenodd" 
+        clip-rule="evenodd"
+        d="M17.2 5.633 8.6.855 0 5.633v26.51l16.2 9 16.2-9v-8.442l7.6-4.223V9.856l-8.6-4.777-8.6 4.777V18.3l-5.6 3.111V5.633ZM38 18.301l-5.6 3.11v-6.157l5.6-3.11V18.3Zm-1.06-7.856-5.54 3.078-5.54-3.079 5.54-3.078 5.54 3.079ZM24.8 18.3v-6.157l5.6 3.111v6.158L24.8 18.3Zm-1 1.732 5.54 3.078-13.14 7.302-5.54-3.078 13.14-7.3v-.002Zm-16.2 7.89 7.6 4.222V38.3L2 30.966V7.92l5.6 3.111v16.892ZM8.6 9.3 3.06 6.222 8.6 3.143l5.54 3.08L8.6 9.3Zm21.8 15.51-13.2 7.334V38.3l13.2-7.334v-6.156ZM9.6 11.034l5.6-3.11v14.6l-5.6 3.11v-14.6Z"
+    />
+</svg>
+</file>
+
+<file path="resources/views/components/app-logo.blade.php">
+<div class="flex aspect-square size-8 items-center justify-center rounded-md bg-accent-content text-accent-foreground">
+    <x-app-logo-icon class="size-5 fill-current text-white dark:text-black" />
+</div>
+<div class="ms-1 grid flex-1 text-start text-sm">
+    <span class="mb-0.5 truncate leading-tight font-semibold">Laravel Starter Kit</span>
+</div>
+</file>
+
+<file path="resources/views/components/auth-header.blade.php">
+@props([
+    'title',
+    'description',
+])
+
+<div class="flex w-full flex-col text-center">
+    <flux:heading size="xl">{{ $title }}</flux:heading>
+    <flux:subheading>{{ $description }}</flux:subheading>
+</div>
+</file>
+
+<file path="resources/views/components/auth-session-status.blade.php">
+@props([
+    'status',
+])
+
+@if ($status)
+    <div {{ $attributes->merge(['class' => 'font-medium text-sm text-green-600']) }}>
+        {{ $status }}
+    </div>
+@endif
+</file>
+
+<file path="resources/views/components/input-otp.blade.php">
+@props([
+    'digits' => 6,
+    'name' => 'code',
+])
+
+<div
+    @focus-2fa-auth-code.window="$refs.input1?.focus()"
+    @clear-2fa-auth-code.window="clearAll()"
+    class="relative"
+    x-data="{
+        totalDigits: @js($digits),
+        digitIndices: @js(range(1, $digits)),
+        init() {
+            $nextTick(() => {
+                this.$refs.input1?.focus();
+            });
+        },
+        getInput(index) {
+            return this.$refs['input' + index];
+        },
+        setValue(index, value) {
+            this.getInput(index).value = value;
+        },
+        getCode() {
+            return this.digitIndices
+                .map(i => this.getInput(i).value)
+                .join('');
+        },
+        updateHiddenField() {
+            this.$refs.code.value = this.getCode();
+            this.$refs.code.dispatchEvent(new Event('input', { bubbles: true }));
+            this.$refs.code.dispatchEvent(new Event('change', { bubbles: true }));
+        },
+        handleNumberKey(index, key) {
+            this.setValue(index, key);
+
+            if (index < this.totalDigits) {
+                this.getInput(index + 1).focus();
+            }
+
+            $nextTick(() => {
+                this.updateHiddenField();
+            });
+        },
+        handleBackspace(index) {
+            const currentInput = this.getInput(index);
+
+            if (currentInput.value !== '') {
+                currentInput.value = '';
+                this.updateHiddenField();
+                return;
+            }
+
+            if (index <= 1) {
+                return;
+            }
+
+            const previousInput = this.getInput(index - 1);
+
+            previousInput.value = '';
+            previousInput.focus();
+
+            this.updateHiddenField();
+        },
+        handleKeyDown(index, event) {
+            const key = event.key;
+
+            if (/^[0-9]$/.test(key)) {
+                event.preventDefault();
+                this.handleNumberKey(index, key);
+                return;
+            }
+
+            if (key === 'Backspace') {
+                event.preventDefault();
+                this.handleBackspace(index);
+                return;
+            }
+        },
+        handlePaste(event) {
+            event.preventDefault();
+
+            const pastedText = (event.clipboardData || window.clipboardData).getData('text');
+            const numericOnly = pastedText.replace(/[^0-9]/g, '');
+            const digitsToFill = Math.min(numericOnly.length, this.totalDigits);
+
+            this.digitIndices
+                .slice(0, digitsToFill)
+                .forEach(index => {
+                    this.setValue(index, numericOnly[index - 1]);
+                });
+
+            if (numericOnly.length >= this.totalDigits) {
+                this.updateHiddenField();
+            }
+        },
+        clearAll() {
+            this.digitIndices.forEach(index => {
+                this.setValue(index, '');
+            });
+
+            this.$refs.code.value = '';
+            this.$refs.input1?.focus();
+        }
+    }"
+>
+    <div class="flex items-center">
+        @for ($x = 1; $x <= $digits; $x++)
+            <input
+                x-ref="input{{ $x }}"
+                type="text"
+                inputmode="numeric"
+                pattern="[0-9]"
+                maxlength="1"
+                autocomplete="off"
+                @paste="handlePaste"
+                @keydown="handleKeyDown({{ $x }}, $event)"
+                @focus="$el.select()"
+                @input="$el.value = $el.value.replace(/[^0-9]/g, '').slice(0, 1)"
+                @class([
+                    'flex size-10 items-center justify-center border border-zinc-300 bg-accent-foreground text-center text-sm font-medium text-accent-content transition-colors focus:border-accent focus:border-2 focus:outline-none focus:relative focus:z-10 dark:border-zinc-700 dark:focus:border-accent',
+                    'rounded-l-md' => $x === 1,
+                    'rounded-r-md' => $x === $digits,
+                    '-ml-px' => $x > 1,
+                ])
+            />
+        @endfor
+    </div>
+
+    <input
+        {{ $attributes->except(['digits']) }}
+        type="hidden"
+        x-ref="code"
+        name="{{ $name }}"
+        minlength="{{ $digits }}"
+        maxlength="{{ $digits }}"
+    />
+</div>
+</file>
+
+<file path="resources/views/components/layouts/app.blade.php">
+<x-layouts.app.sidebar :title="$title ?? null">
+    <flux:main>
+        {{ $slot }}
+    </flux:main>
+</x-layouts.app.sidebar>
+</file>
+
+<file path="resources/views/components/layouts/app/header.blade.php">
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
+    <head>
+        @include('partials.head')
+    </head>
+    <body class="min-h-screen bg-white dark:bg-zinc-800">
+        <flux:header container class="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
+            <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
+
+            <a href="{{ route('dashboard') }}" class="ms-2 me-5 flex items-center space-x-2 rtl:space-x-reverse lg:ms-0" wire:navigate>
+                <x-app-logo />
+            </a>
+
+            <flux:navbar class="-mb-px max-lg:hidden">
+                <flux:navbar.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
+                    {{ __('Dashboard') }}
+                </flux:navbar.item>
+            </flux:navbar>
+
+            <flux:spacer />
+
+            <flux:navbar class="me-1.5 space-x-0.5 rtl:space-x-reverse py-0!">
+                <flux:tooltip :content="__('Search')" position="bottom">
+                    <flux:navbar.item class="!h-10 [&>div>svg]:size-5" icon="magnifying-glass" href="#" :label="__('Search')" />
+                </flux:tooltip>
+                <flux:tooltip :content="__('Repository')" position="bottom">
+                    <flux:navbar.item
+                        class="h-10 max-lg:hidden [&>div>svg]:size-5"
+                        icon="folder-git-2"
+                        href="https://github.com/laravel/livewire-starter-kit"
+                        target="_blank"
+                        :label="__('Repository')"
+                    />
+                </flux:tooltip>
+                <flux:tooltip :content="__('Documentation')" position="bottom">
+                    <flux:navbar.item
+                        class="h-10 max-lg:hidden [&>div>svg]:size-5"
+                        icon="book-open-text"
+                        href="https://laravel.com/docs/starter-kits#livewire"
+                        target="_blank"
+                        label="Documentation"
+                    />
+                </flux:tooltip>
+            </flux:navbar>
+
+            <!-- Desktop User Menu -->
+            <flux:dropdown position="top" align="end">
+                <flux:profile
+                    class="cursor-pointer"
+                    :initials="auth()->user()->initials()"
+                />
+
+                <flux:menu>
+                    <flux:menu.radio.group>
+                        <div class="p-0 text-sm font-normal">
+                            <div class="flex items-center gap-2 px-1 py-1.5 text-start text-sm">
+                                <span class="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg">
+                                    <span
+                                        class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white"
+                                    >
+                                        {{ auth()->user()->initials() }}
+                                    </span>
+                                </span>
+
+                                <div class="grid flex-1 text-start text-sm leading-tight">
+                                    <span class="truncate font-semibold">{{ auth()->user()->name }}</span>
+                                    <span class="truncate text-xs">{{ auth()->user()->email }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </flux:menu.radio.group>
+
+                    <flux:menu.separator />
+
+                    <flux:menu.radio.group>
+                        <flux:menu.item :href="route('settings.profile')" icon="cog" wire:navigate>{{ __('Settings') }}</flux:menu.item>
+                    </flux:menu.radio.group>
+
+                    <flux:menu.separator />
+
+                    <form method="POST" action="{{ route('logout') }}" class="w-full">
+                        @csrf
+                        <flux:menu.item as="button" type="submit" icon="arrow-right-start-on-rectangle" class="w-full">
+                            {{ __('Log Out') }}
+                        </flux:menu.item>
+                    </form>
+                </flux:menu>
+            </flux:dropdown>
+        </flux:header>
+
+        <!-- Mobile Menu -->
+        <flux:sidebar stashable sticky class="lg:hidden border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
+            <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
+
+            <a href="{{ route('dashboard') }}" class="ms-1 flex items-center space-x-2 rtl:space-x-reverse" wire:navigate>
+                <x-app-logo />
+            </a>
+
+            <flux:navlist variant="outline">
+                <flux:navlist.group :heading="__('Platform')">
+                    <flux:navlist.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
+                      {{ __('Dashboard') }}
+                    </flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
+
+            <flux:spacer />
+
+            <flux:navlist variant="outline">
+                <flux:navlist.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
+                    {{ __('Repository') }}
+                </flux:navlist.item>
+
+                <flux:navlist.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire" target="_blank">
+                    {{ __('Documentation') }}
+                </flux:navlist.item>
+            </flux:navlist>
+        </flux:sidebar>
+
+        {{ $slot }}
+
+        @fluxScripts
+    </body>
+</html>
+</file>
+
+<file path="resources/views/components/layouts/app/sidebar.blade.php">
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
+    <head>
+        @include('partials.head')
+    </head>
+    <body class="min-h-screen bg-white dark:bg-zinc-800">
+        <flux:sidebar sticky stashable class="border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
+            <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
+
+            <a href="{{ route('dashboard') }}" class="me-5 flex items-center space-x-2 rtl:space-x-reverse" wire:navigate>
+                <x-app-logo />
+            </a>
+
+            <flux:navlist variant="outline">
+                <flux:navlist.group :heading="__('Platform')" class="grid">
+                    <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
+
+            <flux:spacer />
+
+            <flux:navlist variant="outline">
+                <flux:navlist.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
+                {{ __('Repository') }}
+                </flux:navlist.item>
+
+                <flux:navlist.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire" target="_blank">
+                {{ __('Documentation') }}
+                </flux:navlist.item>
+            </flux:navlist>
+
+            <!-- Desktop User Menu -->
+            <flux:dropdown class="hidden lg:block" position="bottom" align="start">
+                <flux:profile
+                    :name="auth()->user()->name"
+                    :initials="auth()->user()->initials()"
+                    icon:trailing="chevrons-up-down"
+                />
+
+                <flux:menu class="w-[220px]">
+                    <flux:menu.radio.group>
+                        <div class="p-0 text-sm font-normal">
+                            <div class="flex items-center gap-2 px-1 py-1.5 text-start text-sm">
+                                <span class="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg">
+                                    <span
+                                        class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white"
+                                    >
+                                        {{ auth()->user()->initials() }}
+                                    </span>
+                                </span>
+
+                                <div class="grid flex-1 text-start text-sm leading-tight">
+                                    <span class="truncate font-semibold">{{ auth()->user()->name }}</span>
+                                    <span class="truncate text-xs">{{ auth()->user()->email }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </flux:menu.radio.group>
+
+                    <flux:menu.separator />
+
+                    <flux:menu.radio.group>
+                        <flux:menu.item :href="route('settings.profile')" icon="cog" wire:navigate>{{ __('Settings') }}</flux:menu.item>
+                    </flux:menu.radio.group>
+
+                    <flux:menu.separator />
+
+                    <form method="POST" action="{{ route('logout') }}" class="w-full">
+                        @csrf
+                        <flux:menu.item as="button" type="submit" icon="arrow-right-start-on-rectangle" class="w-full">
+                            {{ __('Log Out') }}
+                        </flux:menu.item>
+                    </form>
+                </flux:menu>
+            </flux:dropdown>
+        </flux:sidebar>
+
+        <!-- Mobile User Menu -->
+        <flux:header class="lg:hidden">
+            <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
+
+            <flux:spacer />
+
+            <flux:dropdown position="top" align="end">
+                <flux:profile
+                    :initials="auth()->user()->initials()"
+                    icon-trailing="chevron-down"
+                />
+
+                <flux:menu>
+                    <flux:menu.radio.group>
+                        <div class="p-0 text-sm font-normal">
+                            <div class="flex items-center gap-2 px-1 py-1.5 text-start text-sm">
+                                <span class="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg">
+                                    <span
+                                        class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white"
+                                    >
+                                        {{ auth()->user()->initials() }}
+                                    </span>
+                                </span>
+
+                                <div class="grid flex-1 text-start text-sm leading-tight">
+                                    <span class="truncate font-semibold">{{ auth()->user()->name }}</span>
+                                    <span class="truncate text-xs">{{ auth()->user()->email }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </flux:menu.radio.group>
+
+                    <flux:menu.separator />
+
+                    <flux:menu.radio.group>
+                        <flux:menu.item :href="route('settings.profile')" icon="cog" wire:navigate>{{ __('Settings') }}</flux:menu.item>
+                    </flux:menu.radio.group>
+
+                    <flux:menu.separator />
+
+                    <form method="POST" action="{{ route('logout') }}" class="w-full">
+                        @csrf
+                        <flux:menu.item as="button" type="submit" icon="arrow-right-start-on-rectangle" class="w-full">
+                            {{ __('Log Out') }}
+                        </flux:menu.item>
+                    </form>
+                </flux:menu>
+            </flux:dropdown>
+        </flux:header>
+
+        {{ $slot }}
+
+        @fluxScripts
+    </body>
+</html>
+</file>
+
+<file path="resources/views/components/layouts/auth.blade.php">
+<x-layouts.auth.simple :title="$title ?? null">
+    {{ $slot }}
+</x-layouts.auth.simple>
+</file>
+
+<file path="resources/views/components/layouts/auth/card.blade.php">
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
+    <head>
+        @include('partials.head')
+    </head>
+    <body class="min-h-screen bg-neutral-100 antialiased dark:bg-linear-to-b dark:from-neutral-950 dark:to-neutral-900">
+        <div class="bg-muted flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
+            <div class="flex w-full max-w-md flex-col gap-6">
+                <a href="{{ route('home') }}" class="flex flex-col items-center gap-2 font-medium" wire:navigate>
+                    <span class="flex h-9 w-9 items-center justify-center rounded-md">
+                        <x-app-logo-icon class="size-9 fill-current text-black dark:text-white" />
+                    </span>
+
+                    <span class="sr-only">{{ config('app.name', 'Laravel') }}</span>
+                </a>
+
+                <div class="flex flex-col gap-6">
+                    <div class="rounded-xl border bg-white dark:bg-stone-950 dark:border-stone-800 text-stone-800 shadow-xs">
+                        <div class="px-10 py-8">{{ $slot }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @fluxScripts
+    </body>
+</html>
+</file>
+
+<file path="resources/views/components/layouts/auth/simple.blade.php">
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
+    <head>
+        @include('partials.head')
+    </head>
+    <body class="min-h-screen bg-white antialiased dark:bg-linear-to-b dark:from-neutral-950 dark:to-neutral-900">
+        <div class="bg-background flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
+            <div class="flex w-full max-w-sm flex-col gap-2">
+                <a href="{{ route('home') }}" class="flex flex-col items-center gap-2 font-medium" wire:navigate>
+                    <span class="flex h-9 w-9 mb-1 items-center justify-center rounded-md">
+                        <x-app-logo-icon class="size-9 fill-current text-black dark:text-white" />
+                    </span>
+                    <span class="sr-only">{{ config('app.name', 'Laravel') }}</span>
+                </a>
+                <div class="flex flex-col gap-6">
+                    {{ $slot }}
+                </div>
+            </div>
+        </div>
+        @fluxScripts
+    </body>
+</html>
+</file>
+
+<file path="resources/views/components/layouts/auth/split.blade.php">
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
+    <head>
+        @include('partials.head')
+    </head>
+    <body class="min-h-screen bg-white antialiased dark:bg-linear-to-b dark:from-neutral-950 dark:to-neutral-900">
+        <div class="relative grid h-dvh flex-col items-center justify-center px-8 sm:px-0 lg:max-w-none lg:grid-cols-2 lg:px-0">
+            <div class="bg-muted relative hidden h-full flex-col p-10 text-white lg:flex dark:border-e dark:border-neutral-800">
+                <div class="absolute inset-0 bg-neutral-900"></div>
+                <a href="{{ route('home') }}" class="relative z-20 flex items-center text-lg font-medium" wire:navigate>
+                    <span class="flex h-10 w-10 items-center justify-center rounded-md">
+                        <x-app-logo-icon class="me-2 h-7 fill-current text-white" />
+                    </span>
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+
+                @php
+                    [$message, $author] = str(Illuminate\Foundation\Inspiring::quotes()->random())->explode('-');
+                @endphp
+
+                <div class="relative z-20 mt-auto">
+                    <blockquote class="space-y-2">
+                        <flux:heading size="lg">&ldquo;{{ trim($message) }}&rdquo;</flux:heading>
+                        <footer><flux:heading>{{ trim($author) }}</flux:heading></footer>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="w-full lg:p-8">
+                <div class="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+                    <a href="{{ route('home') }}" class="z-20 flex flex-col items-center gap-2 font-medium lg:hidden" wire:navigate>
+                        <span class="flex h-9 w-9 items-center justify-center rounded-md">
+                            <x-app-logo-icon class="size-9 fill-current text-black dark:text-white" />
+                        </span>
+
+                        <span class="sr-only">{{ config('app.name', 'Laravel') }}</span>
+                    </a>
+                    {{ $slot }}
+                </div>
+            </div>
+        </div>
+        @fluxScripts
+    </body>
+</html>
+</file>
+
+<file path="resources/views/components/placeholder-pattern.blade.php">
+@props([
+    'id' => uniqid(),
+])
+
+<svg {{ $attributes }} fill="none">
+    <defs>
+        <pattern id="pattern-{{ $id }}" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+            <path d="M-1 5L5 -1M3 9L8.5 3.5" stroke-width="0.5"></path>
+        </pattern>
+    </defs>
+    <rect stroke="none" fill="url(#pattern-{{ $id }})" width="100%" height="100%"></rect>
+</svg>
+</file>
+
+<file path="resources/views/components/settings/layout.blade.php">
+<div class="flex items-start max-md:flex-col">
+    <div class="me-10 w-full pb-4 md:w-[220px]">
+        <flux:navlist>
+            <flux:navlist.item :href="route('settings.profile')" wire:navigate>{{ __('Profile') }}</flux:navlist.item>
+            <flux:navlist.item :href="route('settings.password')" wire:navigate>{{ __('Password') }}</flux:navlist.item>
+            @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
+                <flux:navlist.item :href="route('two-factor.show')" wire:navigate>{{ __('Two-Factor Auth') }}</flux:navlist.item>
+            @endif
+            <flux:navlist.item :href="route('settings.appearance')" wire:navigate>{{ __('Appearance') }}</flux:navlist.item>
+        </flux:navlist>
+    </div>
+
+    <flux:separator class="md:hidden" />
+
+    <div class="flex-1 self-stretch max-md:pt-6">
+        <flux:heading>{{ $heading ?? '' }}</flux:heading>
+        <flux:subheading>{{ $subheading ?? '' }}</flux:subheading>
+
+        <div class="mt-5 w-full max-w-lg">
+            {{ $slot }}
+        </div>
+    </div>
+</div>
+</file>
+
+<file path="resources/views/dashboard.blade.php">
+<x-layouts.app :title="__('Dashboard')">
+    <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
+        <div class="grid auto-rows-min gap-4 md:grid-cols-3">
+            <div class="relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
+                <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
+            </div>
+            <div class="relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
+                <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
+            </div>
+            <div class="relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
+                <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
+            </div>
+        </div>
+        <div class="relative h-full flex-1 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
+            <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
+        </div>
+    </div>
+</x-layouts.app>
+</file>
+
+<file path="resources/views/flux/icon/book-open-text.blade.php">
+{{-- Credit: Lucide (https://lucide.dev) --}}
+
+@props([
+    'variant' => 'outline',
+])
+
+@php
+    if ($variant === 'solid') {
+        throw new \Exception('The "solid" variant is not supported in Lucide.');
+    }
+
+    $classes = Flux::classes('shrink-0')->add(
+        match ($variant) {
+            'outline' => '[:where(&)]:size-6',
+            'solid' => '[:where(&)]:size-6',
+            'mini' => '[:where(&)]:size-5',
+            'micro' => '[:where(&)]:size-4',
+        },
+    );
+
+    $strokeWidth = match ($variant) {
+        'outline' => 2,
+        'mini' => 2.25,
+        'micro' => 2.5,
+    };
+@endphp
+
+<svg
+    {{ $attributes->class($classes) }}
+    data-flux-icon
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="{{ $strokeWidth }}"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+    data-slot="icon"
+>
+    <path d="M12 7v14" />
+    <path d="M16 12h2" />
+    <path d="M16 8h2" />
+    <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
+    <path d="M6 12h2" />
+    <path d="M6 8h2" />
+</svg>
+</file>
+
+<file path="resources/views/flux/icon/chevrons-up-down.blade.php">
+{{-- Credit: Lucide (https://lucide.dev) --}}
+
+@props([
+    'variant' => 'outline',
+])
+
+@php
+    if ($variant === 'solid') {
+        throw new \Exception('The "solid" variant is not supported in Lucide.');
+    }
+
+    $classes = Flux::classes('shrink-0')->add(
+        match ($variant) {
+            'outline' => '[:where(&)]:size-6',
+            'solid' => '[:where(&)]:size-6',
+            'mini' => '[:where(&)]:size-5',
+            'micro' => '[:where(&)]:size-4',
+        },
+    );
+
+    $strokeWidth = match ($variant) {
+        'outline' => 2,
+        'mini' => 2.25,
+        'micro' => 2.5,
+    };
+@endphp
+
+<svg
+    {{ $attributes->class($classes) }}
+    data-flux-icon
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="{{ $strokeWidth }}"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+    data-slot="icon"
+>
+    <path d="m7 15 5 5 5-5" />
+    <path d="m7 9 5-5 5 5" />
+</svg>
+</file>
+
+<file path="resources/views/flux/icon/folder-git-2.blade.php">
+{{-- Credit: Lucide (https://lucide.dev) --}}
+
+@props([
+    'variant' => 'outline',
+])
+
+@php
+    if ($variant === 'solid') {
+        throw new \Exception('The "solid" variant is not supported in Lucide.');
+    }
+
+    $classes = Flux::classes('shrink-0')->add(
+        match ($variant) {
+            'outline' => '[:where(&)]:size-6',
+            'solid' => '[:where(&)]:size-6',
+            'mini' => '[:where(&)]:size-5',
+            'micro' => '[:where(&)]:size-4',
+        },
+    );
+
+    $strokeWidth = match ($variant) {
+        'outline' => 2,
+        'mini' => 2.25,
+        'micro' => 2.5,
+    };
+@endphp
+
+<svg
+    {{ $attributes->class($classes) }}
+    data-flux-icon
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="{{ $strokeWidth }}"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+    data-slot="icon"
+>
+    <path d="M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v5" />
+    <circle cx="13" cy="12" r="2" />
+    <path d="M18 19c-2.8 0-5-2.2-5-5v8" />
+    <circle cx="20" cy="19" r="2" />
+</svg>
+</file>
+
+<file path="resources/views/flux/icon/layout-grid.blade.php">
+{{-- Credit: Lucide (https://lucide.dev) --}}
+
+@props([
+    'variant' => 'outline',
+])
+
+@php
+    if ($variant === 'solid') {
+        throw new \Exception('The "solid" variant is not supported in Lucide.');
+    }
+
+    $classes = Flux::classes('shrink-0')->add(
+        match ($variant) {
+            'outline' => '[:where(&)]:size-6',
+            'solid' => '[:where(&)]:size-6',
+            'mini' => '[:where(&)]:size-5',
+            'micro' => '[:where(&)]:size-4',
+        },
+    );
+
+    $strokeWidth = match ($variant) {
+        'outline' => 2,
+        'mini' => 2.25,
+        'micro' => 2.5,
+    };
+@endphp
+
+<svg
+    {{ $attributes->class($classes) }}
+    data-flux-icon
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="{{ $strokeWidth }}"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+    data-slot="icon"
+>
+    <rect width="7" height="7" x="3" y="3" rx="1" />
+    <rect width="7" height="7" x="14" y="3" rx="1" />
+    <rect width="7" height="7" x="14" y="14" rx="1" />
+    <rect width="7" height="7" x="3" y="14" rx="1" />
+</svg>
+</file>
+
+<file path="resources/views/flux/navlist/group.blade.php">
+@props([
+    'expandable' => false,
+    'expanded' => true,
+    'heading' => null,
+])
+
+<?php if ($expandable && $heading): ?>
+
+<ui-disclosure
+    {{ $attributes->class('group/disclosure') }}
+    @if ($expanded === true) open @endif
+    data-flux-navlist-group
+>
+    <button
+        type="button"
+        class="group/disclosure-button mb-[2px] flex h-10 w-full items-center rounded-lg text-zinc-500 hover:bg-zinc-800/5 hover:text-zinc-800 lg:h-8 dark:text-white/80 dark:hover:bg-white/[7%] dark:hover:text-white"
+    >
+        <div class="ps-3 pe-4">
+            <flux:icon.chevron-down class="hidden size-3! group-data-open/disclosure-button:block" />
+            <flux:icon.chevron-right class="block size-3! group-data-open/disclosure-button:hidden" />
+        </div>
+
+        <span class="text-sm font-medium leading-none">{{ $heading }}</span>
+    </button>
+
+    <div class="relative hidden space-y-[2px] ps-7 data-open:block" @if ($expanded === true) data-open @endif>
+        <div class="absolute inset-y-[3px] start-0 ms-4 w-px bg-zinc-200 dark:bg-white/30"></div>
+
+        {{ $slot }}
+    </div>
+</ui-disclosure>
+
+<?php elseif ($heading): ?>
+
+<div {{ $attributes->class('block space-y-[2px]') }}>
+    <div class="px-1 py-2">
+        <div class="text-xs leading-none text-zinc-400">{{ $heading }}</div>
+    </div>
+
+    <div>
+        {{ $slot }}
+    </div>
+</div>
+
+<?php else: ?>
+
+<div {{ $attributes->class('block space-y-[2px]') }}>
+    {{ $slot }}
+</div>
+
+<?php endif; ?>
+</file>
+
+<file path="resources/views/livewire/auth/confirm-password.blade.php">
+<x-layouts.auth>
+    <div class="flex flex-col gap-6">
+        <x-auth-header
+            :title="__('Confirm password')"
+            :description="__('This is a secure area of the application. Please confirm your password before continuing.')"
+        />
+
+        <x-auth-session-status class="text-center" :status="session('status')" />
+
+        <form method="POST" action="{{ route('password.confirm.store') }}" class="flex flex-col gap-6">
+            @csrf
+
+            <flux:input
+                name="password"
+                :label="__('Password')"
+                type="password"
+                required
+                autocomplete="current-password"
+                :placeholder="__('Password')"
+                viewable
+            />
+
+            <flux:button variant="primary" type="submit" class="w-full" data-test="confirm-password-button">
+                {{ __('Confirm') }}
+            </flux:button>
+        </form>
+    </div>
+</x-layouts.auth>
+</file>
+
+<file path="resources/views/livewire/auth/forgot-password.blade.php">
+<div class="flex flex-col gap-6">
+    <x-auth-header :title="__('Forgot password')" :description="__('Enter your email to receive a password reset link')" />
+
+    <!-- Session Status -->
+    <x-auth-session-status class="text-center" :status="session('status')" />
+
+    <form method="POST" wire:submit="sendPasswordResetLink" class="flex flex-col gap-6">
+        <!-- Email Address -->
+        <flux:input
+            wire:model="email"
+            :label="__('Email Address')"
+            type="email"
+            required
+            autofocus
+            placeholder="email@example.com"
+        />
+
+        <flux:button variant="primary" type="submit" class="w-full">{{ __('Email password reset link') }}</flux:button>
+    </form>
+
+    <div class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-400">
+        <span>{{ __('Or, return to') }}</span>
+        <flux:link :href="route('login')" wire:navigate>{{ __('log in') }}</flux:link>
+    </div>
+</div>
+</file>
+
+<file path="resources/views/livewire/auth/login.blade.php">
+<div class="flex flex-col gap-6">
+    <x-auth-header :title="__('Log in to your account')" :description="__('Enter your email and password below to log in')" />
+
+    <!-- Session Status -->
+    <x-auth-session-status class="text-center" :status="session('status')" />
+
+    <form method="POST" wire:submit="login" class="flex flex-col gap-6">
+        <!-- Email Address -->
+        <flux:input
+            wire:model="email"
+            :label="__('Email address')"
+            type="email"
+            required
+            autofocus
+            autocomplete="email"
+            placeholder="email@example.com"
+        />
+
+        <!-- Password -->
+        <div class="relative">
+            <flux:input
+                wire:model="password"
+                :label="__('Password')"
+                type="password"
+                required
+                autocomplete="current-password"
+                :placeholder="__('Password')"
+                viewable
+            />
+
+            @if (Route::has('password.request'))
+                <flux:link class="absolute top-0 text-sm end-0" :href="route('password.request')" wire:navigate>
+                    {{ __('Forgot your password?') }}
+                </flux:link>
+            @endif
+        </div>
+
+        <!-- Remember Me -->
+        <flux:checkbox wire:model="remember" :label="__('Remember me')" />
+
+        <div class="flex items-center justify-end">
+            <flux:button variant="primary" type="submit" class="w-full" data-test="login-button">
+                {{ __('Log in') }}
+            </flux:button>
+        </div>
+    </form>
+
+    @if (Route::has('register'))
+        <div class="space-x-1 text-sm text-center rtl:space-x-reverse text-zinc-600 dark:text-zinc-400">
+            <span>{{ __('Don\'t have an account?') }}</span>
+            <flux:link :href="route('register')" wire:navigate>{{ __('Sign up') }}</flux:link>
+        </div>
+    @endif
+</div>
+</file>
+
+<file path="resources/views/livewire/auth/register.blade.php">
+<div class="flex flex-col gap-6">
+    <x-auth-header :title="__('Create an account')" :description="__('Enter your details below to create your account')" />
+
+    <!-- Session Status -->
+    <x-auth-session-status class="text-center" :status="session('status')" />
+
+    <form method="POST" wire:submit="register" class="flex flex-col gap-6">
+        <!-- Name -->
+        <flux:input
+            wire:model="name"
+            :label="__('Name')"
+            type="text"
+            required
+            autofocus
+            autocomplete="name"
+            :placeholder="__('Full name')"
+        />
+
+        <!-- Email Address -->
+        <flux:input
+            wire:model="email"
+            :label="__('Email address')"
+            type="email"
+            required
+            autocomplete="email"
+            placeholder="email@example.com"
+        />
+
+        <!-- Password -->
+        <flux:input
+            wire:model="password"
+            :label="__('Password')"
+            type="password"
+            required
+            autocomplete="new-password"
+            :placeholder="__('Password')"
+            viewable
+        />
+
+        <!-- Confirm Password -->
+        <flux:input
+            wire:model="password_confirmation"
+            :label="__('Confirm password')"
+            type="password"
+            required
+            autocomplete="new-password"
+            :placeholder="__('Confirm password')"
+            viewable
+        />
+
+        <div class="flex items-center justify-end">
+            <flux:button type="submit" variant="primary" class="w-full">
+                {{ __('Create account') }}
+            </flux:button>
+        </div>
+    </form>
+
+    <div class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-600 dark:text-zinc-400">
+        <span>{{ __('Already have an account?') }}</span>
+        <flux:link :href="route('login')" wire:navigate>{{ __('Log in') }}</flux:link>
+    </div>
+</div>
+</file>
+
+<file path="resources/views/livewire/auth/reset-password.blade.php">
+<div class="flex flex-col gap-6">
+    <x-auth-header :title="__('Reset password')" :description="__('Please enter your new password below')" />
+
+    <!-- Session Status -->
+    <x-auth-session-status class="text-center" :status="session('status')" />
+
+    <form method="POST" wire:submit="resetPassword" class="flex flex-col gap-6">
+        <!-- Email Address -->
+        <flux:input
+            wire:model="email"
+            :label="__('Email')"
+            type="email"
+            required
+            autocomplete="email"
+        />
+
+        <!-- Password -->
+        <flux:input
+            wire:model="password"
+            :label="__('Password')"
+            type="password"
+            required
+            autocomplete="new-password"
+            :placeholder="__('Password')"
+            viewable
+        />
+
+        <!-- Confirm Password -->
+        <flux:input
+            wire:model="password_confirmation"
+            :label="__('Confirm password')"
+            type="password"
+            required
+            autocomplete="new-password"
+            :placeholder="__('Confirm password')"
+            viewable
+        />
+
+        <div class="flex items-center justify-end">
+            <flux:button type="submit" variant="primary" class="w-full">
+                {{ __('Reset password') }}
+            </flux:button>
+        </div>
+    </form>
+</div>
+</file>
+
+<file path="resources/views/livewire/auth/two-factor-challenge.blade.php">
+<x-layouts.auth>
+    <div class="flex flex-col gap-6">
+        <div
+            class="relative w-full h-auto"
+            x-cloak
+            x-data="{
+                showRecoveryInput: @js($errors->has('recovery_code')),
+                code: '',
+                recovery_code: '',
+                toggleInput() {
+                    this.showRecoveryInput = !this.showRecoveryInput;
+
+                    this.code = '';
+                    this.recovery_code = '';
+
+                    $dispatch('clear-2fa-auth-code');
+
+                    $nextTick(() => {
+                        this.showRecoveryInput
+                            ? this.$refs.recovery_code?.focus()
+                            : $dispatch('focus-2fa-auth-code');
+                    });
+                },
+            }"
+        >
+            <div x-show="!showRecoveryInput">
+                <x-auth-header
+                    :title="__('Authentication Code')"
+                    :description="__('Enter the authentication code provided by your authenticator application.')"
+                />
+            </div>
+
+            <div x-show="showRecoveryInput">
+                <x-auth-header
+                    :title="__('Recovery Code')"
+                    :description="__('Please confirm access to your account by entering one of your emergency recovery codes.')"
+                />
+            </div>
+
+            <form method="POST" action="{{ route('two-factor.login.store') }}">
+                @csrf
+
+                <div class="space-y-5 text-center">
+                    <div x-show="!showRecoveryInput">
+                        <div class="flex items-center justify-center my-5">
+                            <x-input-otp
+                                name="code"
+                                digits="6"
+                                autocomplete="one-time-code"
+                                x-model="code"
+                            />
+                        </div>
+
+                        @error('code')
+                            <flux:text color="red">
+                                {{ $message }}
+                            </flux:text>
+                        @enderror
+                    </div>
+
+                    <div x-show="showRecoveryInput">
+                        <div class="my-5">
+                            <flux:input
+                                type="text"
+                                name="recovery_code"
+                                x-ref="recovery_code"
+                                x-bind:required="showRecoveryInput"
+                                autocomplete="one-time-code"
+                                x-model="recovery_code"
+                            />
+                        </div>
+
+                        @error('recovery_code')
+                            <flux:text color="red">
+                                {{ $message }}
+                            </flux:text>
+                        @enderror
+                    </div>
+
+                    <flux:button
+                        variant="primary"
+                        type="submit"
+                        class="w-full"
+                    >
+                        {{ __('Continue') }}
+                    </flux:button>
+                </div>
+
+                <div class="mt-5 space-x-0.5 text-sm leading-5 text-center">
+                    <span class="opacity-50">{{ __('or you can') }}</span>
+                    <div class="inline font-medium underline cursor-pointer opacity-80">
+                        <span x-show="!showRecoveryInput" @click="toggleInput()">{{ __('login using a recovery code') }}</span>
+                        <span x-show="showRecoveryInput" @click="toggleInput()">{{ __('login using an authentication code') }}</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</x-layouts.auth>
+</file>
+
+<file path="resources/views/livewire/auth/verify-email.blade.php">
+<div class="mt-4 flex flex-col gap-6">
+    <flux:text class="text-center">
+        {{ __('Please verify your email address by clicking on the link we just emailed to you.') }}
+    </flux:text>
+
+    @if (session('status') == 'verification-link-sent')
+        <flux:text class="text-center font-medium !dark:text-green-400 !text-green-600">
+            {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+        </flux:text>
+    @endif
+
+    <div class="flex flex-col items-center justify-between space-y-3">
+        <flux:button wire:click="sendVerification" variant="primary" class="w-full">
+            {{ __('Resend verification email') }}
+        </flux:button>
+
+        <flux:link class="text-sm cursor-pointer" wire:click="logout">
+            {{ __('Log out') }}
+        </flux:link>
+    </div>
+</div>
+</file>
+
+<file path="resources/views/livewire/settings/appearance.blade.php">
+<section class="w-full">
+    @include('partials.settings-heading')
+
+    <x-settings.layout :heading="__('Appearance')" :subheading=" __('Update the appearance settings for your account')">
+        <flux:radio.group x-data variant="segmented" x-model="$flux.appearance">
+            <flux:radio value="light" icon="sun">{{ __('Light') }}</flux:radio>
+            <flux:radio value="dark" icon="moon">{{ __('Dark') }}</flux:radio>
+            <flux:radio value="system" icon="computer-desktop">{{ __('System') }}</flux:radio>
+        </flux:radio.group>
+    </x-settings.layout>
+</section>
+</file>
+
+<file path="resources/views/livewire/settings/delete-user-form.blade.php">
+<section class="mt-10 space-y-6">
+    <div class="relative mb-5">
+        <flux:heading>{{ __('Delete account') }}</flux:heading>
+        <flux:subheading>{{ __('Delete your account and all of its resources') }}</flux:subheading>
+    </div>
+
+    <flux:modal.trigger name="confirm-user-deletion">
+        <flux:button variant="danger" x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')">
+            {{ __('Delete account') }}
+        </flux:button>
+    </flux:modal.trigger>
+
+    <flux:modal name="confirm-user-deletion" :show="$errors->isNotEmpty()" focusable class="max-w-lg">
+        <form method="POST" wire:submit="deleteUser" class="space-y-6">
+            <div>
+                <flux:heading size="lg">{{ __('Are you sure you want to delete your account?') }}</flux:heading>
+
+                <flux:subheading>
+                    {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.') }}
+                </flux:subheading>
+            </div>
+
+            <flux:input wire:model="password" :label="__('Password')" type="password" />
+
+            <div class="flex justify-end space-x-2 rtl:space-x-reverse">
+                <flux:modal.close>
+                    <flux:button variant="filled">{{ __('Cancel') }}</flux:button>
+                </flux:modal.close>
+
+                <flux:button variant="danger" type="submit">{{ __('Delete account') }}</flux:button>
+            </div>
+        </form>
+    </flux:modal>
+</section>
+</file>
+
+<file path="resources/views/livewire/settings/password.blade.php">
+<section class="w-full">
+    @include('partials.settings-heading')
+
+    <x-settings.layout :heading="__('Update password')" :subheading="__('Ensure your account is using a long, random password to stay secure')">
+        <form method="POST" wire:submit="updatePassword" class="mt-6 space-y-6">
+            <flux:input
+                wire:model="current_password"
+                :label="__('Current password')"
+                type="password"
+                required
+                autocomplete="current-password"
+            />
+            <flux:input
+                wire:model="password"
+                :label="__('New password')"
+                type="password"
+                required
+                autocomplete="new-password"
+            />
+            <flux:input
+                wire:model="password_confirmation"
+                :label="__('Confirm Password')"
+                type="password"
+                required
+                autocomplete="new-password"
+            />
+
+            <div class="flex items-center gap-4">
+                <div class="flex items-center justify-end">
+                    <flux:button variant="primary" type="submit" class="w-full">{{ __('Save') }}</flux:button>
+                </div>
+
+                <x-action-message class="me-3" on="password-updated">
+                    {{ __('Saved.') }}
+                </x-action-message>
+            </div>
+        </form>
+    </x-settings.layout>
+</section>
+</file>
+
+<file path="resources/views/livewire/settings/profile.blade.php">
+<section class="w-full">
+    @include('partials.settings-heading')
+
+    <x-settings.layout :heading="__('Profile')" :subheading="__('Update your name and email address')">
+        <form wire:submit="updateProfileInformation" class="my-6 w-full space-y-6">
+            <flux:input wire:model="name" :label="__('Name')" type="text" required autofocus autocomplete="name" />
+
+            <div>
+                <flux:input wire:model="email" :label="__('Email')" type="email" required autocomplete="email" />
+
+                @if (auth()->user() instanceof \Illuminate\Contracts\Auth\MustVerifyEmail &&! auth()->user()->hasVerifiedEmail())
+                    <div>
+                        <flux:text class="mt-4">
+                            {{ __('Your email address is unverified.') }}
+
+                            <flux:link class="text-sm cursor-pointer" wire:click.prevent="resendVerificationNotification">
+                                {{ __('Click here to re-send the verification email.') }}
+                            </flux:link>
+                        </flux:text>
+
+                        @if (session('status') === 'verification-link-sent')
+                            <flux:text class="mt-2 font-medium !dark:text-green-400 !text-green-600">
+                                {{ __('A new verification link has been sent to your email address.') }}
+                            </flux:text>
+                        @endif
+                    </div>
+                @endif
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="flex items-center justify-end">
+                    <flux:button variant="primary" type="submit" class="w-full">{{ __('Save') }}</flux:button>
+                </div>
+
+                <x-action-message class="me-3" on="profile-updated">
+                    {{ __('Saved.') }}
+                </x-action-message>
+            </div>
+        </form>
+
+        <livewire:settings.delete-user-form />
+    </x-settings.layout>
+</section>
+</file>
+
+<file path="resources/views/livewire/settings/two-factor.blade.php">
+<section class="w-full">
+    @include('partials.settings-heading')
+
+    <x-settings.layout
+        :heading="__('Two Factor Authentication')"
+        :subheading="__('Manage your two-factor authentication settings')"
+    >
+        <div class="flex flex-col w-full mx-auto space-y-6 text-sm" wire:cloak>
+            @if ($twoFactorEnabled)
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <flux:badge color="green">{{ __('Enabled') }}</flux:badge>
+                    </div>
+
+                    <flux:text>
+                        {{ __('With two-factor authentication enabled, you will be prompted for a secure, random pin during login, which you can retrieve from the TOTP-supported application on your phone.') }}
+                    </flux:text>
+
+                    <livewire:settings.two-factor.recovery-codes :$requiresConfirmation/>
+
+                    <div class="flex justify-start">
+                        <flux:button
+                            variant="danger"
+                            icon="shield-exclamation"
+                            icon:variant="outline"
+                            wire:click="disable"
+                        >
+                            {{ __('Disable 2FA') }}
+                        </flux:button>
+                    </div>
+                </div>
+            @else
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <flux:badge color="red">{{ __('Disabled') }}</flux:badge>
+                    </div>
+
+                    <flux:text variant="subtle">
+                        {{ __('When you enable two-factor authentication, you will be prompted for a secure pin during login. This pin can be retrieved from a TOTP-supported application on your phone.') }}
+                    </flux:text>
+
+                    <flux:button
+                        variant="primary"
+                        icon="shield-check"
+                        icon:variant="outline"
+                        wire:click="enable"
+                    >
+                        {{ __('Enable 2FA') }}
+                    </flux:button>
+                </div>
+            @endif
+        </div>
+    </x-settings.layout>
+
+    <flux:modal
+        name="two-factor-setup-modal"
+        class="max-w-md md:min-w-md"
+        @close="closeModal"
+        wire:model="showModal"
+    >
+        <div class="space-y-6">
+            <div class="flex flex-col items-center space-y-4">
+                <div class="p-0.5 w-auto rounded-full border border-stone-100 dark:border-stone-600 bg-white dark:bg-stone-800 shadow-sm">
+                    <div class="p-2.5 rounded-full border border-stone-200 dark:border-stone-600 overflow-hidden bg-stone-100 dark:bg-stone-200 relative">
+                        <div class="flex items-stretch absolute inset-0 w-full h-full divide-x [&>div]:flex-1 divide-stone-200 dark:divide-stone-300 justify-around opacity-50">
+                            @for ($i = 1; $i <= 5; $i++)
+                                <div></div>
+                            @endfor
+                        </div>
+
+                        <div class="flex flex-col items-stretch absolute w-full h-full divide-y [&>div]:flex-1 inset-0 divide-stone-200 dark:divide-stone-300 justify-around opacity-50">
+                            @for ($i = 1; $i <= 5; $i++)
+                                <div></div>
+                            @endfor
+                        </div>
+
+                        <flux:icon.qr-code class="relative z-20 dark:text-accent-foreground"/>
+                    </div>
+                </div>
+
+                <div class="space-y-2 text-center">
+                    <flux:heading size="lg">{{ $this->modalConfig['title'] }}</flux:heading>
+                    <flux:text>{{ $this->modalConfig['description'] }}</flux:text>
+                </div>
+            </div>
+
+            @if ($showVerificationStep)
+                <div class="space-y-6">
+                    <div class="flex flex-col items-center space-y-3">
+                        <x-input-otp
+                            :digits="6"
+                            name="code"
+                            wire:model="code"
+                            autocomplete="one-time-code"
+                        />
+                        @error('code')
+                            <flux:text color="red">
+                                {{ $message }}
+                            </flux:text>
+                        @enderror
+                    </div>
+
+                    <div class="flex items-center space-x-3">
+                        <flux:button
+                            variant="outline"
+                            class="flex-1"
+                            wire:click="resetVerification"
+                        >
+                            {{ __('Back') }}
+                        </flux:button>
+
+                        <flux:button
+                            variant="primary"
+                            class="flex-1"
+                            wire:click="confirmTwoFactor"
+                            x-bind:disabled="$wire.code.length < 6"
+                        >
+                            {{ __('Confirm') }}
+                        </flux:button>
+                    </div>
+                </div>
+            @else
+                @error('setupData')
+                    <flux:callout variant="danger" icon="x-circle" heading="{{ $message }}"/>
+                @enderror
+
+                <div class="flex justify-center">
+                    <div class="relative w-64 overflow-hidden border rounded-lg border-stone-200 dark:border-stone-700 aspect-square">
+                        @empty($qrCodeSvg)
+                            <div class="absolute inset-0 flex items-center justify-center bg-white dark:bg-stone-700 animate-pulse">
+                                <flux:icon.loading/>
+                            </div>
+                        @else
+                            <div class="flex items-center justify-center h-full p-4">
+                                {!! $qrCodeSvg !!}
+                            </div>
+                        @endempty
+                    </div>
+                </div>
+
+                <div>
+                    <flux:button
+                        :disabled="$errors->has('setupData')"
+                        variant="primary"
+                        class="w-full"
+                        wire:click="showVerificationIfNecessary"
+                    >
+                        {{ $this->modalConfig['buttonText'] }}
+                    </flux:button>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="relative flex items-center justify-center w-full">
+                        <div class="absolute inset-0 w-full h-px top-1/2 bg-stone-200 dark:bg-stone-600"></div>
+                        <span class="relative px-2 text-sm bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-400">
+                            {{ __('or, enter the code manually') }}
+                        </span>
+                    </div>
+
+                    <div
+                        class="flex items-center space-x-2"
+                        x-data="{
+                            copied: false,
+                            async copy() {
+                                try {
+                                    await navigator.clipboard.writeText('{{ $manualSetupKey }}');
+                                    this.copied = true;
+                                    setTimeout(() => this.copied = false, 1500);
+                                } catch (e) {
+                                    console.warn('Could not copy to clipboard');
+                                }
+                            }
+                        }"
+                    >
+                        <div class="flex items-stretch w-full border rounded-xl dark:border-stone-700">
+                            @empty($manualSetupKey)
+                                <div class="flex items-center justify-center w-full p-3 bg-stone-100 dark:bg-stone-700">
+                                    <flux:icon.loading variant="mini"/>
+                                </div>
+                            @else
+                                <input
+                                    type="text"
+                                    readonly
+                                    value="{{ $manualSetupKey }}"
+                                    class="w-full p-3 bg-transparent outline-none text-stone-900 dark:text-stone-100"
+                                />
+
+                                <button
+                                    @click="copy()"
+                                    class="px-3 transition-colors border-l cursor-pointer border-stone-200 dark:border-stone-600"
+                                >
+                                    <flux:icon.document-duplicate x-show="!copied" variant="outline"></flux:icon>
+                                    <flux:icon.check
+                                        x-show="copied"
+                                        variant="solid"
+                                        class="text-green-500"
+                                    ></flux:icon>
+                                </button>
+                            @endempty
+                        </div>
+                    </div>
+                </div>
+            @endif
+        </div>
+    </flux:modal>
+</section>
+</file>
+
+<file path="resources/views/livewire/settings/two-factor/recovery-codes.blade.php">
+<div
+    class="py-6 space-y-6 border shadow-sm rounded-xl border-zinc-200 dark:border-white/10"
+    wire:cloak
+    x-data="{ showRecoveryCodes: false }"
+>
+    <div class="px-6 space-y-2">
+        <div class="flex items-center gap-2">
+            <flux:icon.lock-closed variant="outline" class="size-4"/>
+            <flux:heading size="lg" level="3">{{ __('2FA Recovery Codes') }}</flux:heading>
+        </div>
+        <flux:text variant="subtle">
+            {{ __('Recovery codes let you regain access if you lose your 2FA device. Store them in a secure password manager.') }}
+        </flux:text>
+    </div>
+
+    <div class="px-6">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <flux:button
+                x-show="!showRecoveryCodes"
+                icon="eye"
+                icon:variant="outline"
+                variant="primary"
+                @click="showRecoveryCodes = true;"
+                aria-expanded="false"
+                aria-controls="recovery-codes-section"
+            >
+                {{ __('View Recovery Codes') }}
+            </flux:button>
+
+            <flux:button
+                x-show="showRecoveryCodes"
+                icon="eye-slash"
+                icon:variant="outline"
+                variant="primary"
+                @click="showRecoveryCodes = false"
+                aria-expanded="true"
+                aria-controls="recovery-codes-section"
+            >
+                {{ __('Hide Recovery Codes') }}
+            </flux:button>
+
+            @if (filled($recoveryCodes))
+                <flux:button
+                    x-show="showRecoveryCodes"
+                    icon="arrow-path"
+                    variant="filled"
+                    wire:click="regenerateRecoveryCodes"
+                >
+                    {{ __('Regenerate Codes') }}
+                </flux:button>
+            @endif
+        </div>
+
+        <div
+            x-show="showRecoveryCodes"
+            x-transition
+            id="recovery-codes-section"
+            class="relative overflow-hidden"
+            x-bind:aria-hidden="!showRecoveryCodes"
+        >
+            <div class="mt-3 space-y-3">
+                @error('recoveryCodes')
+                    <flux:callout variant="danger" icon="x-circle" heading="{{$message}}"/>
+                @enderror
+
+                @if (filled($recoveryCodes))
+                    <div
+                        class="grid gap-1 p-4 font-mono text-sm rounded-lg bg-zinc-100 dark:bg-white/5"
+                        role="list"
+                        aria-label="Recovery codes"
+                    >
+                        @foreach($recoveryCodes as $code)
+                            <div
+                                role="listitem"
+                                class="select-text"
+                                wire:loading.class="opacity-50 animate-pulse"
+                            >
+                                {{ $code }}
+                            </div>
+                        @endforeach
+                    </div>
+                    <flux:text variant="subtle" class="text-xs">
+                        {{ __('Each recovery code can be used once to access your account and will be removed after use. If you need more, click Regenerate Codes above.') }}
+                    </flux:text>
+                @endif
+            </div>
+        </div>
+    </div>
+</div>
+</file>
+
+<file path="resources/views/partials/head.blade.php">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>{{ $title ?? config('app.name') }}</title>
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+
+@vite(['resources/css/app.css', 'resources/js/app.js'])
+@fluxAppearance
+</file>
+
+<file path="resources/views/partials/settings-heading.blade.php">
+<div class="relative mb-6 w-full">
+    <flux:heading size="xl" level="1">{{ __('Settings') }}</flux:heading>
+    <flux:subheading size="lg" class="mb-6">{{ __('Manage your profile and account settings') }}</flux:subheading>
+    <flux:separator variant="subtle" />
+</div>
+</file>
+
+<file path="routes/auth.php">
+<?php
+
+use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Livewire\Actions\Logout;
+use App\Livewire\Auth\ForgotPassword;
+use App\Livewire\Auth\Login;
+use App\Livewire\Auth\Register;
+use App\Livewire\Auth\ResetPassword;
+use App\Livewire\Auth\VerifyEmail;
+use Illuminate\Support\Facades\Route;
+
+Route::middleware('guest')->group(function () {
+    Route::get('login', Login::class)->name('login');
+    Route::get('register', Register::class)->name('register');
+    Route::get('forgot-password', ForgotPassword::class)->name('password.request');
+    Route::get('reset-password/{token}', ResetPassword::class)->name('password.reset');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('verify-email', VerifyEmail::class)
+        ->name('verification.notice');
+
+    Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
+        ->middleware(['signed', 'throttle:6,1'])
+        ->name('verification.verify');
+});
+
+Route::post('logout', Logout::class)
+    ->name('logout');
+</file>
+
+<file path="routes/console.php">
+<?php
+
+use Illuminate\Foundation\Inspiring;
+use Illuminate\Support\Facades\Artisan;
+
+Artisan::command('inspire', function () {
+    $this->comment(Inspiring::quote());
+})->purpose('Display an inspiring quote');
+</file>
+
+<file path="routes/web.php">
+<?php
+
+use App\Livewire\Settings\Appearance;
+use App\Livewire\Settings\Password;
+use App\Livewire\Settings\Profile;
+use App\Livewire\Settings\TwoFactor;
+use Illuminate\Support\Facades\Route;
+use Laravel\Fortify\Features;
+
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
+
+Route::view('dashboard', 'dashboard')
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
+Route::middleware(['auth'])->group(function () {
+    Route::redirect('settings', 'settings/profile');
+
+    Route::get('settings/profile', Profile::class)->name('settings.profile');
+    Route::get('settings/password', Password::class)->name('settings.password');
+    Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
+
+    Route::get('settings/two-factor', TwoFactor::class)
+        ->middleware(
+            when(
+                Features::canManageTwoFactorAuthentication()
+                    && Features::optionEnabled(Features::twoFactorAuthentication(), 'confirmPassword'),
+                ['password.confirm'],
+                [],
+            ),
+        )
+        ->name('two-factor.show');
+});
+
+require __DIR__.'/auth.php';
+</file>
+
+<file path="storage/app/.gitignore">
+*
+!private/
+!public/
+!.gitignore
+</file>
+
+<file path="storage/app/private/.gitignore">
+*
+!.gitignore
+</file>
+
+<file path="storage/app/public/.gitignore">
+*
+!.gitignore
+</file>
+
+<file path="storage/framework/.gitignore">
+compiled.php
+config.php
+down
+events.scanned.php
+maintenance.php
+routes.php
+routes.scanned.php
+schedule-*
+services.json
+</file>
+
+<file path="storage/framework/cache/.gitignore">
+*
+!data/
+!.gitignore
+</file>
+
+<file path="storage/framework/cache/data/.gitignore">
+*
+!.gitignore
+</file>
+
+<file path="storage/framework/sessions/.gitignore">
+*
+!.gitignore
+</file>
+
+<file path="storage/framework/testing/.gitignore">
+*
+!.gitignore
+</file>
+
+<file path="storage/framework/views/.gitignore">
+*
+!.gitignore
+</file>
+
+<file path="storage/logs/.gitignore">
+*
+!.gitignore
+</file>
+
+<file path="tests/Feature/Auth/AuthenticationTest.php">
+<?php
+
+use App\Livewire\Auth\Login;
+use App\Models\User;
+use Laravel\Fortify\Features;
+use Livewire\Livewire;
+
+test('login screen can be rendered', function () {
+    $response = $this->get('/login');
+
+    $response->assertStatus(200);
+});
+
+test('users can authenticate using the login screen', function () {
+    $user = User::factory()->withoutTwoFactor()->create();
+
+    $response = Livewire::test(Login::class)
+        ->set('email', $user->email)
+        ->set('password', 'password')
+        ->call('login');
+
+    $response
+        ->assertHasNoErrors()
+        ->assertRedirect(route('dashboard', absolute: false));
+
+    $this->assertAuthenticated();
+});
+
+test('users can not authenticate with invalid password', function () {
+    $user = User::factory()->create();
+
+    $response = Livewire::test(Login::class)
+        ->set('email', $user->email)
+        ->set('password', 'wrong-password')
+        ->call('login');
+
+    $response->assertHasErrors('email');
+
+    $this->assertGuest();
+});
+
+test('users with two factor enabled are redirected to two factor challenge', function () {
+    if (! Features::canManageTwoFactorAuthentication()) {
+        $this->markTestSkipped('Two-factor authentication is not enabled.');
+    }
+
+    Features::twoFactorAuthentication([
+        'confirm' => true,
+        'confirmPassword' => true,
+    ]);
+
+    $user = User::factory()->create();
+
+    $user->forceFill([
+        'two_factor_secret' => encrypt('test-secret'),
+        'two_factor_recovery_codes' => encrypt(json_encode(['code1', 'code2'])),
+        'two_factor_confirmed_at' => now(),
+    ])->save();
+
+    $response = Livewire::test('auth.login')
+        ->set('email', $user->email)
+        ->set('password', 'password')
+        ->call('login');
+
+    $response->assertRedirect(route('two-factor.login'));
+    $response->assertSessionHas('login.id', $user->id);
+    $this->assertGuest();
+});
+
+test('users can logout', function () {
+    $user = User::factory()->create();
+
+    $response = $this->actingAs($user)->post('/logout');
+
+    $response->assertRedirect('/');
+
+    $this->assertGuest();
+});
+</file>
+
+<file path="tests/Feature/Auth/EmailVerificationTest.php">
+<?php
+
+use App\Models\User;
+use Illuminate\Auth\Events\Verified;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\URL;
+
+test('email verification screen can be rendered', function () {
+    $user = User::factory()->unverified()->create();
+
+    $response = $this->actingAs($user)->get('/verify-email');
+
+    $response->assertStatus(200);
+});
+
+test('email can be verified', function () {
+    $user = User::factory()->unverified()->create();
+
+    Event::fake();
+
+    $verificationUrl = URL::temporarySignedRoute(
+        'verification.verify',
+        now()->addMinutes(60),
+        ['id' => $user->id, 'hash' => sha1($user->email)]
+    );
+
+    $response = $this->actingAs($user)->get($verificationUrl);
+
+    Event::assertDispatched(Verified::class);
+
+    expect($user->fresh()->hasVerifiedEmail())->toBeTrue();
+    $response->assertRedirect(route('dashboard', absolute: false).'?verified=1');
+});
+
+test('email is not verified with invalid hash', function () {
+    $user = User::factory()->unverified()->create();
+
+    $verificationUrl = URL::temporarySignedRoute(
+        'verification.verify',
+        now()->addMinutes(60),
+        ['id' => $user->id, 'hash' => sha1('wrong-email')]
+    );
+
+    $this->actingAs($user)->get($verificationUrl);
+
+    expect($user->fresh()->hasVerifiedEmail())->toBeFalse();
+});
+</file>
+
+<file path="tests/Feature/Auth/PasswordConfirmationTest.php">
+<?php
+
+use App\Models\User;
+
+test('confirm password screen can be rendered', function () {
+    $user = User::factory()->create();
+
+    $response = $this->actingAs($user)->get(route('password.confirm'));
+
+    $response->assertStatus(200);
+});
+</file>
+
+<file path="tests/Feature/Auth/PasswordResetTest.php">
+<?php
+
+use App\Livewire\Auth\ForgotPassword;
+use App\Livewire\Auth\ResetPassword;
+use App\Models\User;
+use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
+use Illuminate\Support\Facades\Notification;
+use Livewire\Livewire;
+
+test('reset password link screen can be rendered', function () {
+    $response = $this->get('/forgot-password');
+
+    $response->assertStatus(200);
+});
+
+test('reset password link can be requested', function () {
+    Notification::fake();
+
+    $user = User::factory()->create();
+
+    Livewire::test(ForgotPassword::class)
+        ->set('email', $user->email)
+        ->call('sendPasswordResetLink');
+
+    Notification::assertSentTo($user, ResetPasswordNotification::class);
+});
+
+test('reset password screen can be rendered', function () {
+    Notification::fake();
+
+    $user = User::factory()->create();
+
+    Livewire::test(ForgotPassword::class)
+        ->set('email', $user->email)
+        ->call('sendPasswordResetLink');
+
+    Notification::assertSentTo($user, ResetPasswordNotification::class, function ($notification) {
+        $response = $this->get('/reset-password/'.$notification->token);
+
+        $response->assertStatus(200);
+
+        return true;
+    });
+});
+
+test('password can be reset with valid token', function () {
+    Notification::fake();
+
+    $user = User::factory()->create();
+
+    Livewire::test(ForgotPassword::class)
+        ->set('email', $user->email)
+        ->call('sendPasswordResetLink');
+
+    Notification::assertSentTo($user, ResetPasswordNotification::class, function ($notification) use ($user) {
+        $response = Livewire::test(ResetPassword::class, ['token' => $notification->token])
+            ->set('email', $user->email)
+            ->set('password', 'password')
+            ->set('password_confirmation', 'password')
+            ->call('resetPassword');
+
+        $response
+            ->assertHasNoErrors()
+            ->assertRedirect(route('login', absolute: false));
+
+        return true;
+    });
+});
+</file>
+
+<file path="tests/Feature/Auth/RegistrationTest.php">
+<?php
+
+use App\Livewire\Auth\Register;
+use Livewire\Livewire;
+
+test('registration screen can be rendered', function () {
+    $response = $this->get('/register');
+
+    $response->assertStatus(200);
+});
+
+test('new users can register', function () {
+    $response = Livewire::test(Register::class)
+        ->set('name', 'Test User')
+        ->set('email', 'test@example.com')
+        ->set('password', 'password')
+        ->set('password_confirmation', 'password')
+        ->call('register');
+
+    $response
+        ->assertHasNoErrors()
+        ->assertRedirect(route('dashboard', absolute: false));
+
+    $this->assertAuthenticated();
+});
+</file>
+
+<file path="tests/Feature/Auth/TwoFactorChallengeTest.php">
+<?php
+
+use App\Models\User;
+use Laravel\Fortify\Features;
+use Livewire\Livewire;
+
+test('two factor challenge redirects to login when not authenticated', function () {
+    if (! Features::canManageTwoFactorAuthentication()) {
+        $this->markTestSkipped('Two-factor authentication is not enabled.');
+    }
+
+    $response = $this->get(route('two-factor.login'));
+
+    $response->assertRedirect(route('login'));
+});
+
+test('two factor challenge can be rendered', function () {
+    if (! Features::canManageTwoFactorAuthentication()) {
+        $this->markTestSkipped('Two-factor authentication is not enabled.');
+    }
+
+    Features::twoFactorAuthentication([
+        'confirm' => true,
+        'confirmPassword' => true,
+    ]);
+
+    $user = User::factory()->create();
+
+    $user->forceFill([
+        'two_factor_secret' => encrypt('test-secret'),
+        'two_factor_recovery_codes' => encrypt(json_encode(['code1', 'code2'])),
+        'two_factor_confirmed_at' => now(),
+    ])->save();
+
+    Livewire::test('auth.login')
+        ->set('email', $user->email)
+        ->set('password', 'password')
+        ->call('login')
+        ->assertRedirect(route('two-factor.login'))
+        ->assertOk();
+});
+</file>
+
+<file path="tests/Feature/DashboardTest.php">
+<?php
+
+use App\Models\User;
+
+test('guests are redirected to the login page', function () {
+    $this->get('/dashboard')->assertRedirect('/login');
+});
+
+test('authenticated users can visit the dashboard', function () {
+    $this->actingAs($user = User::factory()->create());
+
+    $this->get('/dashboard')->assertStatus(200);
+});
+</file>
+
+<file path="tests/Feature/ExampleTest.php">
+<?php
+
+test('returns a successful response', function () {
+    $response = $this->get('/');
+
+    $response->assertStatus(200);
+});
+</file>
+
+<file path="tests/Feature/Settings/PasswordUpdateTest.php">
+<?php
+
+use App\Livewire\Settings\Password;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Livewire\Livewire;
+
+test('password can be updated', function () {
+    $user = User::factory()->create([
+        'password' => Hash::make('password'),
+    ]);
+
+    $this->actingAs($user);
+
+    $response = Livewire::test(Password::class)
+        ->set('current_password', 'password')
+        ->set('password', 'new-password')
+        ->set('password_confirmation', 'new-password')
+        ->call('updatePassword');
+
+    $response->assertHasNoErrors();
+
+    expect(Hash::check('new-password', $user->refresh()->password))->toBeTrue();
+});
+
+test('correct password must be provided to update password', function () {
+    $user = User::factory()->create([
+        'password' => Hash::make('password'),
+    ]);
+
+    $this->actingAs($user);
+
+    $response = Livewire::test(Password::class)
+        ->set('current_password', 'wrong-password')
+        ->set('password', 'new-password')
+        ->set('password_confirmation', 'new-password')
+        ->call('updatePassword');
+
+    $response->assertHasErrors(['current_password']);
+});
+</file>
+
+<file path="tests/Feature/Settings/ProfileUpdateTest.php">
+<?php
+
+use App\Livewire\Settings\Profile;
+use App\Models\User;
+use Livewire\Livewire;
+
+test('profile page is displayed', function () {
+    $this->actingAs($user = User::factory()->create());
+
+    $this->get('/settings/profile')->assertOk();
+});
+
+test('profile information can be updated', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user);
+
+    $response = Livewire::test(Profile::class)
+        ->set('name', 'Test User')
+        ->set('email', 'test@example.com')
+        ->call('updateProfileInformation');
+
+    $response->assertHasNoErrors();
+
+    $user->refresh();
+
+    expect($user->name)->toEqual('Test User');
+    expect($user->email)->toEqual('test@example.com');
+    expect($user->email_verified_at)->toBeNull();
+});
+
+test('email verification status is unchanged when email address is unchanged', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user);
+
+    $response = Livewire::test(Profile::class)
+        ->set('name', 'Test User')
+        ->set('email', $user->email)
+        ->call('updateProfileInformation');
+
+    $response->assertHasNoErrors();
+
+    expect($user->refresh()->email_verified_at)->not->toBeNull();
+});
+
+test('user can delete their account', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user);
+
+    $response = Livewire::test('settings.delete-user-form')
+        ->set('password', 'password')
+        ->call('deleteUser');
+
+    $response
+        ->assertHasNoErrors()
+        ->assertRedirect('/');
+
+    expect($user->fresh())->toBeNull();
+    expect(auth()->check())->toBeFalse();
+});
+
+test('correct password must be provided to delete account', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user);
+
+    $response = Livewire::test('settings.delete-user-form')
+        ->set('password', 'wrong-password')
+        ->call('deleteUser');
+
+    $response->assertHasErrors(['password']);
+
+    expect($user->fresh())->not->toBeNull();
+});
+</file>
+
+<file path="tests/Feature/Settings/TwoFactorAuthenticationTest.php">
+<?php
+
+use App\Models\User;
+use Laravel\Fortify\Features;
+use Livewire\Livewire;
+
+beforeEach(function () {
+    if (! Features::canManageTwoFactorAuthentication()) {
+        $this->markTestSkipped('Two-factor authentication is not enabled.');
+    }
+
+    Features::twoFactorAuthentication([
+        'confirm' => true,
+        'confirmPassword' => true,
+    ]);
+});
+
+test('two factor settings page can be rendered', function () {
+    $user = User::factory()->withoutTwoFactor()->create();
+
+    $this->actingAs($user)
+        ->withSession(['auth.password_confirmed_at' => time()])
+        ->get(route('two-factor.show'))
+        ->assertOk()
+        ->assertSee('Two Factor Authentication')
+        ->assertSee('Disabled');
+});
+
+test('two factor settings page requires password confirmation when enabled', function () {
+    $user = User::factory()->create();
+
+    $response = $this->actingAs($user)
+        ->get(route('two-factor.show'));
+
+    $response->assertRedirect(route('password.confirm'));
+});
+
+test('two factor settings page returns forbidden response when two factor is disabled', function () {
+    config(['fortify.features' => []]);
+
+    $user = User::factory()->create();
+
+    $response = $this->actingAs($user)
+        ->withSession(['auth.password_confirmed_at' => time()])
+        ->get(route('two-factor.show'));
+
+    $response->assertForbidden();
+});
+
+test('two factor authentication disabled when confirmation abandoned between requests', function () {
+    $user = User::factory()->create();
+
+    $user->forceFill([
+        'two_factor_secret' => encrypt('test-secret'),
+        'two_factor_recovery_codes' => encrypt(json_encode(['code1', 'code2'])),
+        'two_factor_confirmed_at' => null,
+    ])->save();
+
+    $this->actingAs($user);
+
+    $component = Livewire::test('settings.two-factor');
+
+    $component->assertSet('twoFactorEnabled', false);
+
+    $this->assertDatabaseHas('users', [
+        'id' => $user->id,
+        'two_factor_secret' => null,
+        'two_factor_recovery_codes' => null,
+    ]);
+});
+</file>
+
+<file path="tests/Pest.php">
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Test Case
+|--------------------------------------------------------------------------
+|
+| The closure you provide to your test functions is always bound to a specific PHPUnit test
+| case class. By default, that class is "PHPUnit\Framework\TestCase". Of course, you may
+| need to change it using the "pest()" function to bind a different classes or traits.
+|
+*/
+
+pest()->extend(Tests\TestCase::class)
+    ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
+    ->in('Feature');
+
+/*
+|--------------------------------------------------------------------------
+| Expectations
+|--------------------------------------------------------------------------
+|
+| When you're writing tests, you often need to check that values meet certain conditions. The
+| "expect()" function gives you access to a set of "expectations" methods that you can use
+| to assert different things. Of course, you may extend the Expectation API at any time.
+|
+*/
+
+expect()->extend('toBeOne', function () {
+    return $this->toBe(1);
+});
+
+/*
+|--------------------------------------------------------------------------
+| Functions
+|--------------------------------------------------------------------------
+|
+| While Pest is very powerful out-of-the-box, you may have some testing code specific to your
+| project that you don't want to repeat in every file. Here you can also expose helpers as
+| global functions to help you to reduce the number of lines of code in your test files.
+|
+*/
+
+function something()
+{
+    // ..
+}
+</file>
+
+<file path="tests/TestCase.php">
+<?php
+
+namespace Tests;
+
+use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+
+abstract class TestCase extends BaseTestCase
+{
+    //
+}
+</file>
+
+<file path="tests/Unit/ExampleTest.php">
+<?php
+
+test('that true is true', function () {
+    expect(true)->toBeTrue();
+});
+</file>
+
+<file path="vite.config.js">
+import {
+    defineConfig
+} from 'vite';
+import laravel from 'laravel-vite-plugin';
+import tailwindcss from "@tailwindcss/vite";
+
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: ['resources/css/app.css', 'resources/js/app.js'],
+            refresh: true,
+        }),
+        tailwindcss(),
+    ],
+    server: {
+        cors: true,
+    },
+});
+</file>
+
+<file path="resources/views/welcome.blade.php">
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zona NEA | Emprendedores e Inversores</title>
+    @vite('resources/css/app.css')
+    <script>
+        // Persistencia de modo oscuro
+        if (
+            localStorage.theme === 'dark' ||
+            (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+</head>
+<body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- Navbar -->
+    <header class="flex justify-between items-center px-6 py-4 shadow-sm dark:shadow-gray-800">
+        <div class="flex items-center space-x-2">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-8 h-8">
+            <span class="font-bold text-lg">Zona NEA</span>
+        </div>
+
+        <nav class="flex items-center space-x-4">
+            @auth
+                <a href="{{ url('/dashboard') }}" class="text-sm hover:underline">Dashboard</a>
+            @else
+                <a href="{{ route('login') }}" class="px-4 py-2 text-sm rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">
+                    Iniciar Sesión
+                </a>
+                <a href="{{ route('register') }}" class="px-4 py-2 text-sm rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition">
+                    Registrarse
+                </a>
+            @endauth
+
+            <!-- Botón modo oscuro -->
+            <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 2a.75.75 0 01.75.75V4a.75.75 0 01-1.5 0V2.75A.75.75 0 0110 2zM10 16a.75.75 0 01.75.75V18a.75.75 0 01-1.5 0v-1.25A.75.75 0 0110 16zM4 9.25a.75.75 0 000 1.5H2.75a.75.75 0 000-1.5H4zM17.25 9.25a.75.75 0 000 1.5H19a.75.75 0 000-1.5h-1.75zM4.22 4.22a.75.75 0 011.06 0L6.5 5.44a.75.75 0 11-1.06 1.06L4.22 5.28a.75.75 0 010-1.06zM14.56 14.56a.75.75 0 011.06 0l1.22 1.22a.75.75 0 01-1.06 1.06l-1.22-1.22a.75.75 0 010-1.06zM14.56 5.44a.75.75 0 010-1.06l1.22-1.22a.75.75 0 111.06 1.06L15.62 5.44a.75.75 0 01-1.06 0zM4.22 15.78a.75.75 0 010-1.06l1.22-1.22a.75.75 0 111.06 1.06L5.28 15.78a.75.75 0 01-1.06 0z"></path>
+                </svg>
+                <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707 8 8 0 1017.293 13.293z"></path>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="text-center py-16 px-6 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
+        <h1 class="text-3xl md:text-5xl font-bold mb-4">Conectando Emprendedores e Inversores en la Zona NEA 🇦🇷</h1>
+        <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 mb-6">
+            Un ecosistema digital donde las ideas innovadoras encuentran el apoyo que necesitan para crecer.
+        </p>
+        @guest
+        <a href="{{ route('register') }}" class="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg text-lg hover:bg-blue-700 transition">
+            Comenzar Ahora
+        </a>
+        @endguest
+    </section>
+
+    <!-- Sección de proyectos -->
+    <section class="px-6 py-12 max-w-7xl mx-auto">
+        <h2 class="text-2xl font-semibold mb-8 text-center">🌱 Proyectos Destacados</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach ([
+                ['nombre'=>'EcoAgro Formosa', 'img'=>'/images/proyecto1.jpg', 'desc'=>'Plataforma para conectar productores agroecológicos con mercados locales.'],
+                ['nombre'=>'SolarNEA', 'img'=>'/images/proyecto2.jpg', 'desc'=>'Energía renovable accesible para comunidades rurales.'],
+                ['nombre'=>'Turismo Vivo', 'img'=>'/images/proyecto3.jpg', 'desc'=>'Experiencias turísticas sostenibles en la región NEA.'],
+            ] as $proyecto)
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition overflow-hidden">
+                    <img src="{{ $proyecto['img'] }}" alt="{{ $proyecto['nombre'] }}" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">{{ $proyecto['nombre'] }}</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">{{ $proyecto['desc'] }}</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </section>
+
+    <footer class="text-center py-6 text-sm border-t dark:border-gray-700">
+        © {{ date('Y') }} Zona NEA – Formosa. Todos los derechos reservados.
+    </footer>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        if (document.documentElement.classList.contains('dark')) {
+            lightIcon.classList.remove('hidden');
+        } else {
+            darkIcon.classList.remove('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', function () {
+            darkIcon.classList.toggle('hidden');
+            lightIcon.classList.toggle('hidden');
+
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        });
+    </script>
+
+</body>
+</html>
+</file>
+
+</files>

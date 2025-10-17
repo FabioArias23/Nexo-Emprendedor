@@ -3,27 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zona NEA | Emprendedores e Inversores</title>
+    <title>Nexo-Emprendedores | Emprendedores e Inversores</title>
     @vite('resources/css/app.css')
-    <script>
-        // Persistencia de modo oscuro
-        if (
-            localStorage.theme === 'dark' ||
-            (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-        ) {
-            document.documentElement.classList.add('dark')
-        } else {
-            document.documentElement.classList.remove('dark')
+<!-- Script para modo oscuro -->
+<script>
+    if (
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+</script>
+
+<!-- Estilos para animación -->
+<style>
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
         }
-    </script>
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+    .animate-fade-in-up {
+        animation: fadeInUp 0.8s ease-out forwards;
+    }
+</style>
 </head>
 <body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
 
     <!-- Navbar -->
     <header class="flex justify-between items-center px-6 py-4 shadow-sm dark:shadow-gray-800">
-        <div class="flex items-center space-x-2">
-            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-8 h-8">
-            <span class="font-bold text-lg">Zona NEA</span>
+<img 
+    src="{{ asset('images/nexo.png') }}" 
+    alt="Logo" 
+    class="w-40 h-20 
+           dark:drop-shadow-[0_0_14px_rgba(255,255,255,1.95)] 
+           transition duration-300"
+/>
+
+
+            
         </div>
 
         <nav class="flex items-center space-x-4">
@@ -51,17 +75,44 @@
     </header>
 
     <!-- Hero -->
-    <section class="text-center py-16 px-6 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
-        <h1 class="text-3xl md:text-5xl font-bold mb-4">Conectando Emprendedores e Inversores en la Zona NEA 🇦🇷</h1>
-        <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 mb-6">
-            Un ecosistema digital donde las ideas innovadoras encuentran el apoyo que necesitan para crecer.
-        </p>
+<section class="relative text-center py-16 px-6 min-h-[60vh] flex flex-col justify-center items-center overflow-hidden">
+    <!-- Video de fondo -->
+    <video 
+        autoplay 
+        muted 
+        loop 
+        playsinline
+        class="absolute inset-0 w-full h-full object-cover z-0"
+    >
+        <source src="{{ asset('images/video.webm') }}" type="video/webm">
+        Tu navegador no soporta videos.
+    </video>
+
+    <!-- Capa de oscurecimiento opcional (mejora la legibilidad del texto) -->
+    <div class="absolute inset-0 bg-white/40 z-10"></div>
+
+    <!-- Contenido encima del video -->
+    <div class="relative z-20 max-w-3xl">
+        <img 
+            src="{{ asset('images/nexo.png') }}" 
+            alt="Logo" 
+            class="w-80 h-40 mx-auto
+                   drop-shadow-[0_0_14px_rgba(255,255,255,1.8)]
+                   animate-fade-in-up"
+        />
+        <h1 class="text-3xl md:text-5xl font-bold mb-4 text-black">
+            Conectando Emprendedores e Inversores en la Zona NEA 🇦🇷
+        </h1>
+      <p class="max-w-4xl mx-auto text-white mb-6 drop-shadow-lg">
+    Un ecosistema digital donde las ideas innovadoras encuentran el apoyo que necesitan para crecer.
+</p>
         @guest
-        <a href="{{ route('register') }}" class="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg text-lg hover:bg-blue-700 transition">
-            Comenzar Ahora
-        </a>
+            <a href="{{ route('register') }}" class="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg text-lg hover:bg-blue-700 transition">
+                Comenzar Ahora
+            </a>
         @endguest
-    </section>
+    </div>
+</section>
 
     <!-- Sección de proyectos -->
     <section class="px-6 py-12 max-w-7xl mx-auto">

@@ -20,6 +20,13 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    
+    // Añade constantes para los roles
+    public const ROLE_INVERSOR = 'inversor';
+    public const ROLE_EMPRENDEDOR = 'emprendedor';
+
+
     protected $fillable = [
         'name',
         'email',

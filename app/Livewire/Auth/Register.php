@@ -7,6 +7,7 @@ use App\Services\FaceRecognitionService; // <-- AÑADE ESTO
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -29,8 +30,10 @@ class Register extends Component
     {
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
+            'role' => ['required', 'string', Rule::in([User::ROLE_EMPRENDEDOR, User::ROLE_INVERSOR])],
+ 
         ]);
 
         $user = User::create($validated);
