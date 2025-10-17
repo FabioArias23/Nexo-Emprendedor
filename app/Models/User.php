@@ -87,12 +87,28 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Project::class, 'project_likes')->withTimestamps();
     }
+
+    /**
+     * Devuelve las iniciales del nombre del usuario.
+     *
+     * @return string
+     */
     public function initials(): string
     {
-        return Str::of($this->name)
-            ->explode(' ')
-            ->take(2)
-            ->map(fn ($word) => Str::substr($word, 0, 1))
-            ->implode('');
+        $words = explode(' ', trim($this->name));
+        $initials = '';
+
+        if (count($words) >= 2) {
+            // Para nombres como "John Doe", devuelve "JD"
+            $initials = strtoupper(substr($words[0], 0, 1) . substr(end($words), 0, 1));
+        } elseif (count($words) === 1 && strlen($words[0]) > 0) {
+            // Para un solo nombre como "John", devuelve "JO"
+            $initials = strtoupper(substr($words[0], 0, 2));
+        } else {
+            // Caso por defecto si el nombre está vacío
+            $initials = '??';
+        }
+
+        return $initials;
     }
 }

@@ -16,7 +16,7 @@ class Project extends Model
         'user_id',
         'title',
         'description',
-        'industry',
+        'category_id',
         'funding_goal',
         'min_investment',
         'business_model',

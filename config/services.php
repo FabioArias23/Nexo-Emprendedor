@@ -39,4 +39,18 @@ return [
  'face_api' => [
         'url' => env('FACE_API_URL'),
     ],
+
+    'groq' => [
+        'api_key' => env('GROQ_API_KEY'),
+        'model' => env('GROQ_MODEL', 'llama-3.1-8b-instant'),
+    ],
+    'huggingface' => [
+        'api_key' => env('HUGGINGFACE_API_KEY'),
+    ],
+
+    'azure' => [
+        'speech_key' => env('AZURE_SPEECH_KEY'),
+        'speech_region' => env('AZURE_SPEECH_REGION'),
+    ],
+
 ];
