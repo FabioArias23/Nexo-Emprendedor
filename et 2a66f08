@@ -1,0 +1,12 @@
+[33m0436334[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m)[m feat: Agrega videos usando Git LFS
+[33me45f06a[m cambiar video de fondo webm
+[33m4583d2e[m cambiar video de fondo
+[33m4550d28[m Merge branch 'feature/view' into develop
+[33m2a66f08[m[33m ([m[1;31morigin/develop[m[33m)[m V1
+[33mc01f36a[m[33m ([m[1;32mfeature/view[m[33m)[m Agregada vista de bienvenida moderna con Tailwind y modo oscuro
+[33m3f60f26[m feat: Establece el esquema inicial de la base de datos y modelos Eloquent
+[33m1fe21a9[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/feature/view[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m feat: actualizar welcome.blade.php con enfoque en proyectos del NEA (Formosa) y modo claro/oscuro
+[33ma952837[m prueba123
+[33ma5900cd[m Merge branch 'main' of https://github.com/FabioArias23/Nexo-Emprendedor
+[33m2e99d25[m Hackaton
+[33me30f5df[m first commit
