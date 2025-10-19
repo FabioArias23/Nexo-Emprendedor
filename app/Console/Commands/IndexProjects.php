@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use App\Models\Project;
+use Illuminate\Support\Facades\DB;
 
 class IndexProjects extends Command
 {
@@ -19,7 +20,7 @@ class IndexProjects extends Command
      * @var string
      */
     protected $description = 'Genera y guarda embeddings para todos los proyectos usando el modelo BGE.';
-    
+
     /**
      * BAAI/bge-base-en-v1.5 es un estándar de la industria para RAG. Produce vectores de 768 dimensiones.
      */
@@ -29,13 +30,13 @@ class IndexProjects extends Command
     {
         $this->info('🚀 Iniciando indexación de proyectos con el modelo BGE...');
 
-        $apiToken = config('services.huggingface.api_key'); // Lo tomamos de config/services.php
+        $apiToken = config('services.huggingface.api_key');
         if (empty($apiToken)) {
             $this->error('CRÍTICO: La API Key de Hugging Face no está configurada en config/services.php o .env.');
             return self::FAILURE;
         }
 
-        $projects = Project::with('category')->get(); // Obtenemos todos los proyectos de la BD
+        $projects = Project::with('category')->whereNull('embedding')->get();
 
         if ($projects->isEmpty()) {
             $this->warn('No se encontraron proyectos en la base de datos. Nada que indexar.');
@@ -46,39 +47,40 @@ class IndexProjects extends Command
         $this->output->progressStart($projects->count());
 
         foreach ($projects as $project) {
-            // Creamos el "documento" a partir de los campos más relevantes del proyecto.
-            // Esto es nuestro "chunk" de información.
+
+            DB::reconnect();
+
+            $categoryName = $project->category?->name ?? 'No especificada';
+
             $textToEmbed = "Título del proyecto: {$project->title}. "
-                         . "Categoría: {$project->category->name}. "
-                         . "Descripción: {$project->description}. "
-                         . "Modelo de negocio: {$project->business_model}. "
-                         . "Potencial de mercado: {$project->market_potential}.";
+                . "Categoría: {$categoryName}. "
+                . "Descripción: {$project->description}. "
+                . "Modelo de negocio: {$project->business_model}. "
+                . "Potencial de mercado: {$project->market_potential}.";
 
             try {
                 $response = Http::withToken($apiToken)
-                                ->timeout(60)
-                                ->post(self::EMBEDDING_API_URL, [
-                                    'inputs' => $textToEmbed,
-                                    'options' => ['wait_for_model' => true]
-                                ]);
+                    ->timeout(60)
+                    ->post(self::EMBEDDING_API_URL, [
+                        'inputs' => $textToEmbed,
+                        'options' => ['wait_for_model' => true]
+                    ]);
 
                 if ($response->successful()) {
                     $embedding = $response->json();
-                    
+
                     // Guardamos el embedding directamente en el proyecto
                     $project->embedding = $embedding;
                     $project->save();
-
                 } else {
                     $this->error(" -> Fallo para el proyecto ID {$project->id}: " . $response->body());
                 }
-
             } catch (\Exception $e) {
-                $this->error(" -> Excepción de conexión para el proyecto ID {$project->id}: " . $e->getMessage());
+                $this->error(" -> Excepción para el proyecto ID {$project->id}: " . substr($e->getMessage(), 0, 200));
             }
-            
+
             $this->output->progressAdvance();
-            usleep(250000); // Mantenemos la pausa para no saturar la API
+            usleep(250000); // pausa para no saturar la API
         }
 
         $this->output->progressFinish();

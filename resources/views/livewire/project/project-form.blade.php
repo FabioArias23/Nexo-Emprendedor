@@ -1,5 +1,4 @@
 <div>
-    {{-- CAMBIO CLAVE: Usamos '$project->exists' para determinar el título --}}
     <h2 class="text-2xl font-bold mb-6">
         {{ $project->exists ? 'Editar Proyecto' : 'Crear Nuevo Proyecto' }}
     </h2>
@@ -11,8 +10,16 @@
         <textarea wire:model="description" placeholder="Descripción detallada del proyecto" rows="5" class="block w-full border-zinc-300 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 rounded-md shadow-sm"></textarea>
         @error('description') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
 
-        <flux:input wire:model="industry" label="Industria" placeholder="Ej: FinTech, Agro, SaaS" required />
-        @error('industry') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+        <div>
+            <label for="category" class="block font-medium text-sm text-zinc-700 dark:text-zinc-300">Categoría</label>
+            <select wire:model="category_id" id="category" class="block w-full mt-1 border-zinc-300 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 rounded-md shadow-sm">
+                <option value="">Selecciona una categoría</option>
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+            @error('category_id') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+        </div>
 
         <flux:input wire:model="funding_goal" label="Meta de Financiación ($)" type="number" step="0.01" required />
         @error('funding_goal') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror

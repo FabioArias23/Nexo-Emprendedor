@@ -28,7 +28,7 @@ class EntrepreneurDashboard extends Component
     public function render()
     {
         // Obtenemos solo los proyectos del usuario autenticado.
-        $projects = Project::where('user_id', auth()->id())->latest()->get();
+        $projects = Project::with('category')->where('user_id', auth()->id())->latest()->get();
 
         return view('livewire.entrepreneur-dashboard', [
             'projects' => $projects,

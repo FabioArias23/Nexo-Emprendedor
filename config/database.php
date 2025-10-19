@@ -97,6 +97,8 @@ return [
             'sslmode' => 'require',
             'options' => [
                 PDO::MYSQL_ATTR_SSL_CA => database_path('certs/ca.crt'),
+                PDO::ATTR_PERSISTENT => false,
+                PDO::ATTR_EMULATE_PREPARES => true,
             ],
         ],
 
