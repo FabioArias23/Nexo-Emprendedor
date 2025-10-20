@@ -8,6 +8,32 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+/**
+ * 
+ * @property int $id
+ * @property int $user_id
+ * @property string $title
+ * @property string $description
+ * @property int $category_id
+ * @property float $funding_goal
+ * @property float $min_investment
+ * @property string $business_model
+ * @property string $market_potential
+ * @property string $status
+ * @property Carbon|null $deadline
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ * @property mixed|null $embedding
+ * 
+ * --- Relaciones ---
+ * @property-read \App\Models\User $entrepreneur
+ * @property-read \App\Models\Category $category
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ProjectPhoto[] $photos
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Investment[] $investments
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $likes
+ * 
+ */
+
 class Project extends Model
 {
     use HasFactory;
@@ -21,11 +47,14 @@ class Project extends Model
         'min_investment',
         'business_model',
         'market_potential',
+        'status',
+        'deadline',
     ];
 
     protected $casts = [
         'funding_goal' => 'decimal:2',
         'min_investment' => 'decimal:2',
+        'deadline' => 'datetime',
     ];
 
     /**

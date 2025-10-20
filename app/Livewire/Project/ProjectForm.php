@@ -38,6 +38,7 @@ class ProjectForm extends Component
             $this->min_investment = $project->min_investment;
             $this->business_model = $project->business_model;
             $this->market_potential = $project->market_potential;
+            $this->deadline = $this->project->deadline ? $this->project->deadline->format('Y-m-d') : '';
         }
     }
 
@@ -56,6 +57,7 @@ class ProjectForm extends Component
             'business_model' => 'required|string',
             'market_potential' => 'required|string',
             'photo' => 'nullable|image|max:2048',
+            'deadline' => 'nullable|date|after:today',
         ]);
 
         $projectData = collect($validatedData)->except('photo')->toArray();
