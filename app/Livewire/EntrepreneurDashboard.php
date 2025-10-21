@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Investment;
+use App\Models\Notification;
 use App\Models\Project;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -38,6 +39,12 @@ class EntrepreneurDashboard extends Component
 
         $investment->status = 'negotiating';
         $investment->save();
+
+        Notification::create([
+            'user_id' => $investment->investor_id, // El inversor que hizo la propuesta
+            'message' => "¡Buenas noticias! Tu propuesta para '{$investment->project->title}' ha sido aceptada. Ya puedes iniciar la conversación.",
+            'link' => route('conversation.show', $investment), // Enlace directo a la conversación
+        ]);
 
         session()->flash('message', '¡Propuesta aceptada! Ahora puedes comunicarte con el inversor.');
     }

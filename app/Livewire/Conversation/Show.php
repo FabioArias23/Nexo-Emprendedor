@@ -4,6 +4,7 @@ namespace App\Livewire\Conversation;
 
 use App\Models\Investment;
 use App\Models\Message;
+use App\Models\Notification; 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -26,7 +27,17 @@ class Show extends Component
 
     public function loadMessages()
     {
+        // 1. Contamos cuántos mensajes hay actualmente en la pantalla (si hay alguno).
+        $previousMessageCount = $this->messageList ? $this->messageList->count() : 0;
+
+        // 2. Obtenemos la lista actualizada de mensajes desde la base de datos.
         $this->messageList = $this->investment->messages()->with('sender')->get();
+
+        // 3. Comparamos. Si el nuevo conteo es mayor que el anterior, significa que llegó un nuevo mensaje.
+        if ($this->messageList->count() > $previousMessageCount) {
+            // 4. Disparamos un nuevo evento SOLO si hay mensajes nuevos.
+            $this->dispatch('new-message-received');
+        }
     }
 
     public function sendMessage()
@@ -46,8 +57,16 @@ class Show extends Component
             'body' => $this->newMessageBody,
         ]);
 
+        Notification::create([
+            'user_id' => $receiverId,
+            'message' => "Has recibido un nuevo mensaje de " . Auth::user()->name . " sobre el proyecto '{$this->investment->project->title}'.",
+            'link' => route('conversation.show', $this->investment),
+        ]);
+
         $this->reset('newMessageBody');
         $this->loadMessages();
+
+        $this->dispatch('message-sent');
     }
 
     public function render()

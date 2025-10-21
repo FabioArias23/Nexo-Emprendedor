@@ -4,6 +4,7 @@ namespace App\Livewire\Investment;
 
 use App\Models\Investment;
 use App\Models\Project;
+use App\Models\Notification;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -51,6 +52,12 @@ class ProposalModal extends Component
             'proposed_amount' => $this->proposed_amount,
             'message' => $this->message,
             'status' => 'pending', // estado inicial
+        ]);
+
+        Notification::create([
+            'user_id' => $this->project->user_id, // El dueño del proyecto
+            'message' => "Has recibido una nueva propuesta de inversión de " . Auth::user()->name . " para tu proyecto '{$this->project->title}'.",
+            'link' => route('dashboard'), // Lo lleva a su dashboard para que vea la propuesta
         ]);
 
         $this->closeModal();
