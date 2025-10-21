@@ -2,19 +2,26 @@
 
 namespace App\Livewire\Project;
 
+use App\Models\Investment;
 use App\Models\Project;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class View extends Component
 {
     public Project $project;
+    public bool $hasProposed = false;
 
-    // Gracias al route-model binding, Laravel inyecta automáticamente
-    // el objeto Project que corresponde al ID en la URL.
     public function mount(Project $project)
     {
-        // Cargamos todas las relaciones que vamos a mostrar para optimizar las consultas.
         $this->project = $project->load('category', 'photos', 'entrepreneur');
+
+        // Verificar si el usuario ya ha hecho una propuesta
+        if (Auth::check() && Auth::user()->role === 'investor') {
+            $this->hasProposed = Investment::where('project_id', $this->project->id)
+                                           ->where('investor_id', Auth::id())
+                                           ->exists();
+        }
     }
 
     public function render()

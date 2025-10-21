@@ -6,9 +6,9 @@
 
         {{-- Galería de Fotos (si hay) --}}
         @if($project->photos->isNotEmpty())
-            <div class="mt-8">
-                <img src="{{ Storage::url($project->photos->first()->path) }}" alt="{{ $project->title }}" class="w-full h-80 object-cover rounded-lg shadow-lg">
-            </div>
+        <div class="mt-8">
+            <img src="{{ Storage::url($project->photos->first()->path) }}" alt="{{ $project->title }}" class="w-full h-80 object-cover rounded-lg shadow-lg">
+        </div>
         @endif
 
         {{-- Detalles Financieros --}}
@@ -31,7 +31,7 @@
         <div class="mt-10 prose prose-lg dark:prose-invert max-w-none">
             <h2>Descripción</h2>
             <p>{{ $project->description }}</p>
-            
+
             <h2>Modelo de Negocio</h2>
             <p>{{ $project->business_model }}</p>
 
@@ -42,12 +42,22 @@
         {{-- Botón de Acción (para Inversores) --}}
         <div class="mt-10 text-center">
             @if(Auth::user()->role === 'investor' && Auth::id() !== $project->user_id)
-                <flux:button 
-                    variant="primary"
-                    wire:click="$dispatch('open-proposal-modal', { projectId: {{ $project->id }} })"
-                >
-                    Proponer Inversión
-                </flux:button>
+
+            @if($hasProposed)
+            {{-- Si ya propuso, muestra un mensaje de confirmación --}}
+            <div class="p-4 bg-green-100 dark:bg-green-900 border border-green-400 dark:border-green-700 text-green-700 dark:text-green-200 rounded-lg">
+                <p class="font-semibold">✓ Ya has enviado una propuesta para este proyecto.</p>
+                <p class="text-sm">El emprendedor ha sido notificado y puedes seguir el estado desde tu dashboard.</p>
+            </div>
+            @else
+            {{-- Si no ha propuesto, muestra el botón --}}
+            <flux:button
+                variant="primary"
+                wire:click="$dispatch('open-proposal-modal', { projectId: {{ $project->id }} })">
+                Proponer Inversión
+            </flux:button>
+            @endif
+
             @endif
         </div>
     </div>
@@ -56,14 +66,13 @@
     <livewire:investment.proposal-modal />
 
     {{-- Opcional: Toast de notificación de éxito --}}
-    <div 
+    <div
         x-data="{ show: false }"
         @proposal-sent.window="show = true; setTimeout(() => show = false, 3000)"
         x-show="show"
         x-transition
         style="display: none;"
-        class="fixed bottom-5 right-5 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg"
-    >
+        class="fixed bottom-5 right-5 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg">
         ¡Propuesta enviada exitosamente!
     </div>
 </div>

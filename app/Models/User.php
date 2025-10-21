@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Str; // <-- Asegúrate de que esta línea esté presente
+use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class User extends Authenticatable
 {
@@ -21,7 +22,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
 
-    
+
     // Añade constantes para los roles
     public const ROLE_INVESTOR = 'investor';
     public const ROLE_ENTREPRENEUR = 'entrepreneur';
@@ -52,7 +53,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
-        'role' => 'string', // Laravel 11+ maneja enums automáticamente, pero es bueno ser explícito
+        'role' => 'string',
     ];
 
     /**
@@ -110,5 +111,19 @@ class User extends Authenticatable
         }
 
         return $initials;
+    }
+
+    /**
+     * Un usuario (emprendedor) recibe muchas propuestas de inversión a través de sus proyectos.
+     */
+    public function proposals(): HasManyThrough
+    {
+        // "Para este Usuario, encuentra las Inversiones (Investment) a través de sus Proyectos (Project)."
+        return $this->hasManyThrough(Investment::class, Project::class);
+    }
+
+    public function messages(): HasMany
+    {
+        return $this->hasMany(Message::class, 'sender_id');
     }
 }

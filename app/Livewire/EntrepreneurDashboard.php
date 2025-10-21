@@ -2,7 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Models\Investment;
 use App\Models\Project;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
@@ -10,12 +12,10 @@ class EntrepreneurDashboard extends Component
 {
     public function delete(Project $project)
     {
-        // Política de seguridad: asegúrate de que el usuario solo pueda borrar sus propios proyectos.
         if ($project->user_id !== auth()->id()) {
             abort(403);
         }
 
-        // Borra las fotos asociadas del almacenamiento
         foreach ($project->photos as $photo) {
             Storage::disk('public')->delete($photo->path);
         }
@@ -25,13 +25,56 @@ class EntrepreneurDashboard extends Component
         session()->flash('message', 'Proyecto eliminado exitosamente.');
     }
 
+    /**
+     * Acepta una propuesta de inversión, cambiando su estado a 'negotiating'.
+     */
+    public function acceptProposal(Investment $investment)
+    {
+        // Medida de seguridad: Asegurarnos de que el emprendedor solo puede
+        // aceptar propuestas dirigidas a sus propios proyectos.
+        if ($investment->project->user_id !== Auth::id()) {
+            abort(403, 'Acción no autorizada.');
+        }
+
+        $investment->status = 'negotiating';
+        $investment->save();
+
+        session()->flash('message', '¡Propuesta aceptada! Ahora puedes comunicarte con el inversor.');
+    }
+
+    /**
+     * Rechaza una propuesta de inversión.
+     */
+    public function rejectProposal(Investment $investment)
+    {
+        // Medida de seguridad similar.
+        if ($investment->project->user_id !== Auth::id()) {
+            abort(403, 'Acción no autorizada.');
+        }
+
+        $investment->status = 'rejected';
+        $investment->save();
+        
+        session()->flash('message', 'La propuesta ha sido rechazada.');
+    }
+
     public function render()
     {
-        // Obtenemos solo los proyectos del usuario autenticado.
-        $projects = Project::with('category')->where('user_id', auth()->id())->latest()->get();
+        $user = Auth::user();
+
+        // Obtenemos los proyectos del usuario.
+        $projects = $user->projects()->with('category')->latest()->get();
+
+        // Obtenemos las propuestas recibidas a través de la nueva relación,
+        // cargando también el proyecto y el inversor de cada propuesta para mostrarlos.
+        $proposals = $user->proposals()
+                          ->with(['project', 'investor'])
+                          ->latest()
+                          ->get();
 
         return view('livewire.entrepreneur-dashboard', [
             'projects' => $projects,
+            'proposals' => $proposals,
         ]);
     }
 }
